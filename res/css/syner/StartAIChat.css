@@ -1,0 +1,60 @@
+/* StartAIChat.css */
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+body .mx_HomePage_default img.logo {
+    width:143x;
+    height: 100px;
+}
+
+body .mx_HomePage_default h1.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+body .mx_HomePage_default h2.subtitle {
+    font-size: 14px;
+    color: #777;
+}
+
+.searchBox {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.iconContainer {
+    display: flex;
+    gap: 10px;
+    justify-content: left;
+    padding-left: 20px;
+}
+
+.pillButton {
+    background-color: transparent;
+    border: 1px solid gray;
+    color: gray;
+    padding: 5px 15px;
+    font-size: 0.8em;
+    border-radius: 25px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.pillButtonSelected {
+    background-color: transparent;
+    border: 1px solid green;
+    color: green;
+    padding: 5px 15px;
+    font-size: 0.8em;
+    border-radius: 25px;
+    cursor: pointer;
+    outline: none;
+}
+

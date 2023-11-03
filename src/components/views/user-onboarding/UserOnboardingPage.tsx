@@ -68,6 +68,7 @@ export function UserOnboardingPage({ justRegistered = false }: Props): JSX.Eleme
         }
     }, [initialSyncComplete, setShowList]);
 
+    // [syner] 修改点: 这里应该可以修改是否显示新注册欢迎页
     // Only show new onboarding list to users who registered after a given date or have chosen a use case
     if (!showUserOnboardingPage(useCase)) {
         return <HomePage justRegistered={justRegistered} />;

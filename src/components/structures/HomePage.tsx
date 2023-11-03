@@ -33,6 +33,9 @@ import MiniAvatarUploader, { AVATAR_SIZE } from "../views/elements/MiniAvatarUpl
 import PosthogTrackers from "../../PosthogTrackers";
 import EmbeddedPage from "./EmbeddedPage";
 
+// [syner] 
+import StartAIChat from "../syner/StartAIChat";
+
 const onClickSendDm = (ev: ButtonEvent): void => {
     PosthogTrackers.trackInteraction("WebHomeCreateChatButton", ev);
     dis.dispatch({ action: "view_create_chat" });
@@ -118,6 +121,10 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
             </React.Fragment>
         );
     }
+
+    introSection = (
+        <StartAIChat />
+    )
 
     return (
         <AutoHideScrollbar className="mx_HomePage mx_HomePage_default" element="main">
