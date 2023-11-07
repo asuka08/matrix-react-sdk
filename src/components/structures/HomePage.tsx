@@ -35,6 +35,8 @@ import EmbeddedPage from "./EmbeddedPage";
 
 // [syner] 
 import StartAIChat from "../syner/StartAIChat";
+import DiscoverAgent from "../syner/DiscoverAgent";
+import DiscoverSpace from "../syner/DiscoverSpace";
 
 const onClickSendDm = (ev: ButtonEvent): void => {
     PosthogTrackers.trackInteraction("WebHomeCreateChatButton", ev);
@@ -131,15 +133,15 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
             <div className="mx_HomePage_default_wrapper">
                 {introSection}
                 <div className="mx_HomePage_default_buttons">
-                    <AccessibleButton onClick={onClickSendDm} className="mx_HomePage_button_sendDm">
-                        {_tDom("onboarding|send_dm")}
-                    </AccessibleButton>
-                    <AccessibleButton onClick={onClickExplore} className="mx_HomePage_button_explore">
-                        {_tDom("onboarding|explore_rooms")}
-                    </AccessibleButton>
-                    <AccessibleButton onClick={onClickNewRoom} className="mx_HomePage_button_createGroup">
-                        {_tDom("onboarding|create_room")}
-                    </AccessibleButton>
+                    <DiscoverAgent />
+                    <DiscoverAgent />
+                    <DiscoverAgent />
+                </div>
+                <div className="mx_HomePage_default_buttons">
+                    <DiscoverSpace />
+                    <DiscoverSpace />
+                    <DiscoverSpace />
+                    <DiscoverSpace />
                 </div>
             </div>
         </AutoHideScrollbar>
