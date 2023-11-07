@@ -13,7 +13,7 @@ const StartAIChat: React.FC = () => {
 
             {/* 标题 */}
             <h1 className="title">Collaboration Of New Agent</h1>
-            <h2 className="subtitle">用Cona帮忙完成所有有趣的任务11111 ⚡</h2>
+            <h2 className="subtitle">用Cona帮忙完成所有有趣的任务 ⚡</h2>
 
             {/* 搜索框 */}
             <input type="text" placeholder="开始新的聊天" className="searchBox" />
