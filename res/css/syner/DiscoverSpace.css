@@ -63,3 +63,16 @@
 .sapceViews, .spaceLikes {
   display: inline-block;
 }
+
+.sapceViews::before, .spaceLikes::before{
+  display: inline-block;
+  content: "";
+  width:8px;
+  height:8px;
+  background-color: chartreuse;
+  border-radius: 50%;
+  margin-right:3px;
+}
+.spaceLikes::before{
+  background-color: darkgray;
+}

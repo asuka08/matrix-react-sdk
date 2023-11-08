@@ -78,3 +78,23 @@
   .agentStatus span {
     padding: 5px;
   }
+  .agentStatus span::before{
+    display: inline-block;
+    width:12px;
+    height:12px;
+    content: "";
+    margin-right: 3px;
+    vertical-align: middle;
+  }
+  .agentStatus span.status1::before{
+    background: url("../../img/syner/partner-icon1.png") no-repeat;
+    background-size: contain;
+  }
+  .agentStatus span.status2::before{
+    background: url("../../img/syner/partner-icon2.png") no-repeat;
+    background-size: contain;
+  }
+  .agentStatus span.status3::before{
+    background: url("../../img/syner/partner-icon3.png") no-repeat;
+    background-size: contain;
+  }
