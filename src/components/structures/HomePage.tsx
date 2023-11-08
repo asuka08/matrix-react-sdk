@@ -132,16 +132,20 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
         <AutoHideScrollbar className="mx_HomePage mx_HomePage_default" element="main">
             <div className="mx_HomePage_default_wrapper">
                 {introSection}
-                <div className="homeTitle">
+                <div className="discoverTitle">
                 <h2>发现伙伴</h2> 
                 <div className="moreLink">查看更多</div>
                 </div>
-                <div className="mx_HomePage_default_buttons">
+                <div className="mx_HomePage_default_buttons discoverContainer">
                     <DiscoverAgent />
                     <DiscoverAgent />
                     <DiscoverAgent />
-                </div>               
-                <div className="mx_HomePage_default_buttons">
+                </div>
+                <div className="discoverTitle">
+                    <h2>发现社区</h2> 
+                    <div className="moreLink">查看更多</div>
+                </div>             
+                <div className="mx_HomePage_default_buttons discoverContainer">
                     <DiscoverSpace />
                     <DiscoverSpace />
                     <DiscoverSpace />

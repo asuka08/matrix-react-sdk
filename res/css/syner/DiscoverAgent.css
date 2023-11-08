@@ -1,0 +1,63 @@
+/* DiscoverAgent.css */
+.mx_HomePage_default .discoverContainer{
+    margin-top:0;
+    padding:0 30px;
+    justify-content:center;
+}
+.discoverTitle{
+    padding:20px 50px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.discoverTitle h2{
+    margin-bottom:0;
+    font-size: 1em;
+}
+.discoverTitle .moreLink{
+    font-size: .75em;
+    line-height: 2.4rem;
+    vertical-align: baseline;
+    cursor: pointer;
+}
+.agentItem {
+    position:relative;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    min-width: 240px;
+    padding: 10px;
+    margin:0 10px;
+    text-align: left;
+  }
+
+  .agentPicture {
+    float:left;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+  }
+  .agentInfo{
+    margin-left: 40px;
+  }
+  .agentInfo h3 {
+    font-size:14px;
+  }
+  
+  .agentInfo p {
+    color: #666;
+    font-size: 12px;
+  }
+  
+  .agentStatus {
+    display: flex;
+    justify-content:left;
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
+  }
+  
+  .agentStatus span {
+    padding: 5px;
+  }

@@ -1,0 +1,65 @@
+/* DiscoverSpace.css */
+.mx_HomePage_default .discoverContainer{
+    margin-top:0;
+    padding:0 30px;
+    justify-content:space-around;
+}
+
+.spaceItem {
+  position:relative;
+  min-width: 200px;
+  height:200px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin:0 10px;
+  background: #f2f2f2;
+  box-shadow: 0 6px 14px 0 hsla(0,0%,7%,.06);
+}
+
+.spaceImage {
+  position:relative;
+  width: 100%;
+  height: 90px;
+  background-color: aqua;
+  object-fit: cover;
+}
+
+.spaceImage .headPicture{
+  position: absolute;
+  left:50%;
+  bottom:-25px;
+  width:50px;
+  height:50px;
+  border-radius: 50%;
+  border:2px solid #fff;
+  margin-left:-25px;
+}
+.spaceContent {
+  padding: 15px 5px;
+}
+
+.spaceTitle {
+  font-size: 1em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.spaceDescription {
+  font-size: .75em;
+  margin-bottom: 1em;
+}
+
+.spaceMeta {
+  position:absolute;
+  width:90%;
+  left:10px;
+  bottom:10px;
+  display: flex;
+  font-size: 0.8em;
+  color: #555;
+  justify-content: space-between;
+}
+
+.sapceViews, .spaceLikes {
+  display: inline-block;
+}
