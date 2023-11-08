@@ -26,11 +26,29 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     min-width: 240px;
-    padding: 10px;
+    padding: 10px 10px 0;
     margin:0 10px;
     text-align: left;
   }
+  .homeIcon1{
+    position:absolute;
+    right:10px;
+    top:10px;
+    width:10px;
+    height:10px;
+    background: url("../../img/syner/home-icon1.png") no-repeat;
+    background-size: cover;
+  }
 
+  .homeIcon2{
+    position:absolute;
+    right:10px;
+    bottom:10px;
+    width:10px;
+    height:10px;
+    background: url("../../img/syner/home-icon2.png") no-repeat;
+    background-size: cover;
+  }
   .agentPicture {
     float:left;
     width: 36px;
@@ -55,7 +73,6 @@
     justify-content:left;
     font-size: 12px;
     color: #666;
-    margin-top: 20px;
   }
   
   .agentStatus span {

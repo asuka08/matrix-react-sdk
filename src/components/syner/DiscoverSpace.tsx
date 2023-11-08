@@ -12,7 +12,7 @@ const DiscoverSpace: React.FC = () => {
                     <img src=''></img>
                 </div>
             </div>
-            <div className='spaceContent'>
+            <div className='spaceContent'>              
                 <h4 className='spaceTitle'>AI研习社</h4>
                 <p className='spaceDescription'>专注于推广AIGC工具的使用技能培训</p>
                 <div className='spaceMeta'>

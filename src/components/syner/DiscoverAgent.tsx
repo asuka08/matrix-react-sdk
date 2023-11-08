@@ -6,6 +6,7 @@ const DiscoverAgent: React.FC = () => {
 
     return (
         <div className='agentItem'>
+            <div className='homeIcon1'></div>
             <img src="../../../res/css/img/syner/temp/agentpic.jpeg" alt="User Avatar" className="agentPicture" />
             <div className="agentInfo">
                 <h3>余世维老师</h3>
@@ -16,6 +17,7 @@ const DiscoverAgent: React.FC = () => {
                 <span>75 评论</span>
                 <span>8 文章</span>
             </div>
+            <div className='homeIcon2'></div>
         </div>
     );
 }
