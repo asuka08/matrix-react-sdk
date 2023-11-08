@@ -1,6 +1,7 @@
 /* DiscoverSpace.css */
 .mx_HomePage_default .discoverContainer{
     margin-top:0;
+    margin-bottom:30px;
     padding:0 30px;
     justify-content:space-around;
 }
@@ -69,7 +70,7 @@
   content: "";
   width:8px;
   height:8px;
-  background-color: chartreuse;
+  background-color:green;
   border-radius: 50%;
   margin-right:3px;
 }
