@@ -61,6 +61,12 @@ export enum Action {
     ViewHomePage = "view_home_page",
 
     /**
+     * Navigates to AI Chat page
+     * [syner] by 王远
+     */
+    ViewAiChatPage = "view_ai_chat_page",
+
+    /**
      * Forces the theme to reload. No additional payload information required.
      */
     RecheckTheme = "recheck_theme",

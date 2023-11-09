@@ -40,7 +40,10 @@ interface Props {
 // For now, that means we set the cutoff at 2022-07-01 00:00 UTC
 const USER_ONBOARDING_CUTOFF_DATE = new Date(1_656_633_600);
 export function showUserOnboardingPage(useCase: UseCase | null): boolean {
-    return useCase !== null || MatrixClientPeg.userRegisteredAfter(USER_ONBOARDING_CUTOFF_DATE);
+    // [syner] 强制返回false, 不显示新用户欢迎页面
+    return false;
+    
+    // return useCase !== null || MatrixClientPeg.userRegisteredAfter(USER_ONBOARDING_CUTOFF_DATE);
 }
 
 const ANIMATION_DURATION = 2800;

@@ -803,6 +803,10 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
             case Action.ViewHomePage:
                 this.viewHome(payload.justRegistered);
                 break;
+            case Action.ViewAiChatPage:
+                // 参照 case Action.ViewHomePage写的, 但不知道在哪调用...
+                this.viewAiChat(payload.justRegistered);
+                break;
             case Action.ViewStartChatOrReuse:
                 this.chatCreateOrReuse(payload.user_id);
                 break;
@@ -1104,6 +1108,20 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
         });
         this.setPage(PageType.HomePage);
         this.notifyNewScreen("home");
+        ThemeController.isLogin = false;
+        this.themeWatcher.recheck();
+    }
+
+    // [syner] 参照viewHome写了一个viewAiChat, 但我还不知道在哪儿调用它...
+    private viewAiChat(justRegistered = false): void {
+        // The home page requires the "logged in" view, so we'll set that.
+        this.setStateForNewView({
+            view: Views.LOGGED_IN,
+            justRegistered,
+            currentRoomId: null,
+        });
+        this.setPage(PageType.AiChat);
+        this.notifyNewScreen("aichat");
         ThemeController.isLogin = false;
         this.themeWatcher.recheck();
     }
@@ -1760,6 +1778,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
         }
     }
 
+    // [syner][注意]:这里是根据URL做Routing导航的地方
     public showScreen(screen: string, params?: { [key: string]: any }): void {
         const cli = MatrixClientPeg.get();
         const isLoggedOutOrGuest = !cli || cli.isGuest();
@@ -1814,6 +1833,11 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
         } else if (screen === "home") {
             dis.dispatch({
                 action: Action.ViewHomePage,
+            });
+        } else if (screen === "aichat") {
+            // [syner] 添加url路由 aichat
+            dis.dispatch({
+                action: Action.ViewAiChatPage,
             });
         } else if (screen === "start") {
             this.showScreen("home");

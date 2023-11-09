@@ -20,6 +20,9 @@ enum PageType {
     HomePage = "home_page",
     RoomView = "room_view",
     UserView = "user_view",
+
+    // [syner] 添加一个AI Chat 的PageType by 王远
+    AiChat = "ai_chat",
 }
 
 export default PageType;

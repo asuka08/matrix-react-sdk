@@ -76,6 +76,9 @@ import { PipContainer } from "./PipContainer";
 import { monitorSyncedPushRules } from "../../utils/pushRules/monitorSyncedPushRules";
 import { ConfigOptions } from "../../SdkConfig";
 
+// [syner] by 王远
+import AIChatPage from "../syner/AiChatPage";
+
 // We need to fetch each pinned message individually (if we don't already have it)
 // so each pinned message may trigger a request. Limit the number per room for sanity.
 // NB. this is just for server notices rather than pinned messages in general.
@@ -647,6 +650,11 @@ class LoggedInView extends React.Component<IProps, IState> {
 
             case PageTypes.HomePage:
                 pageElement = <UserOnboardingPage justRegistered={this.props.justRegistered} />;
+                break;
+
+            // to-do: [syner] 待添加AIChat处理逻辑 by 王远  
+            case PageTypes.AiChat:
+                pageElement = <AIChatPage />;
                 break;
 
             case PageTypes.UserView:
