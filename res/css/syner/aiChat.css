@@ -2,7 +2,7 @@
 .chatTopbar{
   width:100%;
   height:97px;
-  border-bottom:1px solid #f2f2f2;
+  border-bottom:1px solid #c2c0c0;
 }
 .topbarNewchat{
   display: flex;
@@ -16,6 +16,61 @@
   text-align: right;
 }
 
+/* 伙伴头部展示 */
+.partnerDiv{
+  display: flex;
+  padding:20px 20px 10px;
+  justify-content: space-around;
+}
+
+.partnerDiv .goback{
+  width:20px;
+  height: 20px;
+  margin-right:30px;
+  background: url(../../img/syner/goback-icon.png) no-repeat;
+  cursor: pointer;
+  background-size: contain;
+  margin-top: 30px;
+}
+
+.partnerDiv .headPic{
+  width:55px;
+  height:55px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.partnerDiv .introText{
+  flex: 1;
+  line-height: 30px;
+}
+.partnerDiv .introText p{
+  margin:0;
+}
+.colorText{
+  color:#2D5C6D;
+}
+.boldText{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.partnerDiv .addTeam{
+  width:120px;
+  padding-top:20px;
+}
+.partnerDiv .addButton{
+  display: inline-block;
+  width: 90px;
+  height: 30px;
+  background-color: #5A7D8A;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 30px;
+  color:#fff;
+  font-size: 14px;
+}
+
 /* 对话列表 */
 .chatContainer{
     margin-top:0;
@@ -27,6 +82,8 @@
   position: relative;
   display: flex;
   padding-bottom: 20px;
+  justify-content: center;
+  align-items: center;
 }
 .chatPic{
   position: absolute;
@@ -36,6 +93,7 @@
   height: 30px;
 }
 .chatCon{
+  flex:1;
   position:relative;
   width:100%;
   max-width: 720px;
@@ -43,6 +101,22 @@
 }
 .normalCon{
   padding-left:10px;
+}
+/* 上传文件后按钮 */
+.fileCon{
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  line-height: 30px;
+  margin-left:10px;
+}
+.fileCon .fileStyle{
+  display: inline-block;
+  padding: 0 5px;
+  background-color: #7B92EB;
+  color:#fff;
+  border-radius: 8px 0 0 8px;
+  margin-right:6px;
 }
 .answerCon{
   background: white;
@@ -63,7 +137,12 @@
   display: inline-block;
   color:#555;
   margin-left:10px;
+  cursor: pointer;
 }
+.refresh:hover{
+  color:#676c90;
+}
+
 .refresh::before{
   display: inline-block;
   width:20px;
@@ -74,6 +153,31 @@
   vertical-align: text-bottom;
   margin-right:3px;
 }
+
+.stopGenerate,.againGenerate{
+  display: inline-block;
+  color: #0F40F5;
+  margin-left:10px;
+  cursor: pointer;
+}
+.stopGenerate:hover,.againGenerate:hover{
+  color:#4a6ef1;
+}
+.stopGenerate::before,.againGenerate::before{
+  display: inline-block;
+  width:20px;
+  height: 20px;
+  background: url(../../img/syner/again-icon.png) no-repeat;
+  background-size: contain;
+  content: "";
+  vertical-align: text-bottom;
+  margin-right:3px;
+}
+.againGenerate::before{
+  background: url(../../img/syner/refresh-icon2.png) no-repeat;
+  background-size: contain;
+}
+
 p.answerRightButton{
   display: flex;
   justify-content: start;
@@ -96,10 +200,10 @@ p.answerRightButton{
 .tryTitle{
   width: 100%;
   text-align: center;
-  padding:10px 0;
+  padding:40px 0 10px 0;
   font-size: 16px;
   font-weight: 600;
-  color:#555;
+  color:#535353;
 }
 .moreQuestion {
   color: #676c90;
@@ -109,9 +213,11 @@ p.answerRightButton{
   padding: 8px 0;
   white-space: nowrap;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .moreQuestion span{
-  background: hsla(0, 0%, 100%, 0.9);
+  background: hsla(0, 7%, 97%, 0.9);
   border-radius: 6px;
   box-shadow: 0 16px 20px 0 rgba(174,167,223,.06);
   line-height: 24px;
@@ -136,7 +242,7 @@ p.answerRightButton{
 }
 .chatBox {
   background: #fff;
-  border: 1px solid #615f5f;
+  border: 1px solid #446C7B;
   border-radius: 8px;
   margin-bottom: -2px;
   margin-left: 0;
@@ -189,6 +295,8 @@ textarea.antInput {
   vertical-align: bottom;
   text-overflow: ellipsis;
   resize: none;
-  min-width: 400px;
+  min-width: 600px;
   font-size: 1em;
+  max-width: 100%;
+  overflow-y: hidden;
 }
