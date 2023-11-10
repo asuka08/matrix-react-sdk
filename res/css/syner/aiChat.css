@@ -230,13 +230,15 @@ p.answerRightButton{
   width: 100%;
   bottom:0;
   padding-bottom:20px;
+  padding-top:20px;
   display: flex;
   justify-content: center;
+  background: #fff;
 }
 .chatDiv .inner{
     max-width: 960px;
     min-width: 520px;
-    padding: 10px 100px 0 130px;
+    padding: 0 100px 0 130px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -255,7 +257,7 @@ p.answerRightButton{
 .chatButton{
   position:absolute;
   right:20px;
-  top:10px;
+  bottom:10px;
   width:100px;
   height:30px;
   background: url('../../img/syner/input-button.png') no-repeat 5px 0;
@@ -288,7 +290,6 @@ p.answerRightButton{
 textarea.antInput {
   height: auto;
   border:none;
-  line-height: 1.5715;
   max-width: 100%;
   min-height: 30px;
   transition: all .3s,height 0s;
@@ -299,4 +300,5 @@ textarea.antInput {
   font-size: 1em;
   max-width: 100%;
   overflow-y: hidden;
+  margin-top:10px;
 }
