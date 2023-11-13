@@ -30,7 +30,7 @@
   background: url(../../img/syner/goback-icon.png) no-repeat;
   cursor: pointer;
   background-size: contain;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .partnerDiv .headPic{
@@ -39,7 +39,11 @@
   border-radius: 8px;
   margin-right: 20px;
 }
-
+.partnerDiv .headPic img{
+  width:50px;
+  height:50px;
+  border-radius: 10px;
+}
 .partnerDiv .introText{
   flex: 1;
   line-height: 30px;
@@ -92,6 +96,11 @@
   width:30px;
   height: 30px;
 }
+.chatPic img{
+  width:25px;
+  height: 25px;
+  border-radius: 50%;
+}
 .chatCon{
   flex:1;
   position:relative;
@@ -99,16 +108,13 @@
   max-width: 720px;
   min-width: 520px;
 }
-.normalCon{
-  padding-left:10px;
-}
+
 /* 上传文件后按钮 */
 .fileCon{
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   line-height: 30px;
-  margin-left:10px;
 }
 .fileCon .fileStyle{
   display: inline-block;
@@ -122,7 +128,7 @@
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 10px;
+  margin: 10px 0;
   padding: 20px;
 }
 .answerButtons{
@@ -136,7 +142,6 @@
 .refresh{
   display: inline-block;
   color:#555;
-  margin-left:10px;
   cursor: pointer;
 }
 .refresh:hover{
@@ -157,7 +162,6 @@
 .stopGenerate,.againGenerate{
   display: inline-block;
   color: #0F40F5;
-  margin-left:10px;
   cursor: pointer;
 }
 .stopGenerate:hover,.againGenerate:hover{
@@ -238,7 +242,7 @@ p.answerRightButton{
 .chatDiv .inner{
     max-width: 960px;
     min-width: 520px;
-    padding: 0 100px 0 130px;
+    padding: 0 100px 0 140px;
     width: 100%;
     box-sizing: border-box;
 }
