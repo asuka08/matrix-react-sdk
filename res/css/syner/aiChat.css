@@ -306,3 +306,40 @@ textarea.antInput {
   overflow-y: hidden;
   margin-top:10px;
 }
+
+/* 场景输入框 */
+.sceneEditor{
+  padding: 5px;
+  max-height: 262px;
+  width: -webkit-calc(100% - 150px);
+  width: -moz-calc(100% - 150px);
+  width: calc(100% - 150px);
+  color: #1a2029;
+  text-align: left;
+  line-height: 22px;
+  overflow-y: auto;
+  caret-color: #2454ff;
+  word-break: break-word;
+  font-size: 14px;
+}
+.sceneEditor p{
+  padding-left: 15px;
+  margin-bottom: 10px;
+  margin-top:0;
+}
+.sceneTitle{
+  font-weight: 500;
+}
+.sceneEditor span{
+  display: inline-block;
+  white-space: pre-wrap;
+  padding:0 5px;
+}
+.sceneEditor span.normal{
+  background:#D2D2D2;
+  border-radius:5px;
+}
+.sceneEditor span.editorStutas{
+  border-radius:5px;
+  border:1px solid #585858;
+}
