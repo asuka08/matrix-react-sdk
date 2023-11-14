@@ -45,6 +45,9 @@ import { ButtonEvent } from "../views/elements/AccessibleButton";
 import PosthogTrackers from "../../PosthogTrackers";
 import PageType from "../../PageTypes";
 import { UserOnboardingButton } from "../views/user-onboarding/UserOnboardingButton";
+import LeftAiChat from "../syner/LeftAiChat";
+import LeftAgentChat from "../syner/LeftAgentChat";
+import LeftLlmChat from "../syner/LeftLlmChat";
 
 interface IProps {
     isMinimized: boolean;
@@ -387,6 +390,23 @@ export default class LeftPanel extends React.Component<IProps, IState> {
 
         const roomListClasses = classNames("mx_LeftPanel_actualRoomListContainer", "mx_AutoHideScrollbar");
 
+        // [syner] 添加AI对话左边栏 [Start]
+        const leftAiChatList = (
+            <div>
+            <LeftLlmChat />
+            <LeftAgentChat />
+            </div>
+        );
+
+        let leftList;
+
+        if(this.props.pageType === PageType.AiChat) {
+            leftList = leftAiChatList;
+        } else {
+            leftList = roomList;
+        }
+        // [syner] 添加AI对话左边栏 [End]
+
         return (
             <div className={containerClasses}>
                 <div className="mx_LeftPanel_roomListContainer">
@@ -405,7 +425,8 @@ export default class LeftPanel extends React.Component<IProps, IState> {
                             // overflow:scroll;, so force it out of tab order.
                             tabIndex={-1}
                         >
-                            {roomList}
+                            {/* [syner]: 原为 {roomList}, 修改为 {leftList} */}
+                            {leftList}
                         </div>
                     </div>
                 </div>
