@@ -48,6 +48,7 @@ import { UserOnboardingButton } from "../views/user-onboarding/UserOnboardingBut
 import LeftAiChat from "../syner/LeftAiChat";
 import LeftAgentChat from "../syner/LeftAgentChat";
 import LeftLlmChat from "../syner/LeftLlmChat";
+import LeftHome from "../syner/LeftHome";
 
 interface IProps {
     isMinimized: boolean;
@@ -393,15 +394,21 @@ export default class LeftPanel extends React.Component<IProps, IState> {
         // [syner] 添加AI对话左边栏 [Start]
         const leftAiChatList = (
             <div>
-            <LeftLlmChat />
-            <LeftAgentChat />
+                <LeftLlmChat />
+                <LeftAgentChat />
             </div>
+        );
+
+        const leftHomeList = (
+            <LeftHome />
         );
 
         let leftList;
 
         if(this.props.pageType === PageType.AiChat) {
             leftList = leftAiChatList;
+        } else if(this.props.pageType === PageType.HomePage) {
+            leftList = leftHomeList;
         } else {
             leftList = roomList;
         }
