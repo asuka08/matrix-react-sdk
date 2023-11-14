@@ -14,6 +14,23 @@
 }
 .topbarNewchat .rightButton{
   text-align: right;
+  padding-right:10px;
+}
+.sourceButton{
+  padding:0 5px;
+  border:1px solid #5A7D8B;
+  border-radius: 10px;
+  line-height: 24px;
+  color:#2D5C6D;
+  font-size: 12px;
+}
+
+.sourceButton img{
+  width:16px;
+  height:16px;
+  border-radius: 50%;
+  margin-right:3px;
+  vertical-align: text-top;
 }
 
 /* 伙伴头部展示 */

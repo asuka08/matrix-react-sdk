@@ -24,7 +24,7 @@ const AIChatPage: React.FC = () => {
                <div className='topbarNewchat'>
                     <p className='newText'>新对话</p>
                     <div className='rightButton'>
-                        <div className='sourceButton'></div>
+                        <div className='sourceButton'><img src='/welcome/syner/temp/headpic.jpeg'></img>Cona聚合</div>
                     </div>
                 </div>
             </div>
