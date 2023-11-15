@@ -23,7 +23,9 @@ const AIChatPage: React.FC = () => {
             <div className="chatTopbar">
                <div className='topbarNewchat'>
                     <p className='newText'>新对话</p>
-                    <div className='rightButton'>这里是按钮</div>
+                    <div className='rightButton'>
+                        <div className='sourceButton'><img src='/welcome/syner/temp/headpic.jpeg'></img>Cona聚合</div>
+                    </div>
                 </div>
             </div>
             <div className='chatContainer'>
@@ -81,6 +83,23 @@ const AIChatPage: React.FC = () => {
                 </div>
             </div>
 
+            <div className='chatDiv'>
+                <div className='inner'>
+                    <div className='chatBox'>
+                        <div className='sceneEditor'>
+                            <p className='sceneTitle'>画一幅双十一购物节海报图</p>
+                            <p>主体：<span className='editorStutas'>散落在白色台面上香水、相机、电脑、高跟鞋、礼盒等</span></p>
+                            <p>背景：<span className='normal'>极简纯色</span></p>
+                            <p>画质：<span className='normal'>高清摄影</span></p>
+                        </div>
+                        <div className='chatButton'>
+                            <span className='uploatIcon'></span>
+                            <span className='chatIcon'></span>
+                            <span className='sendIcon'></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>

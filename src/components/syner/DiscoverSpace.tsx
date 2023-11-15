@@ -7,9 +7,9 @@ const DiscoverSpace: React.FC = () => {
     return (
         <div className='spaceItem'>
             <div className='spaceImage'>
-                <img src=''></img>
+                <div className='sapceBgpic'><img src='/welcome/syner/temp/spacebg.png'></img></div>
                 <div className='headPicture'>
-                    <img src=''></img>
+                    <img src='/welcome/syner/temp/headpic.jpeg'></img>
                 </div>
             </div>
             <div className='spaceContent'>              

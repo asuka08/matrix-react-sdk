@@ -14,6 +14,23 @@
 }
 .topbarNewchat .rightButton{
   text-align: right;
+  padding-right:10px;
+}
+.sourceButton{
+  padding:0 5px;
+  border:1px solid #5A7D8B;
+  border-radius: 10px;
+  line-height: 24px;
+  color:#2D5C6D;
+  font-size: 12px;
+}
+
+.sourceButton img{
+  width:16px;
+  height:16px;
+  border-radius: 50%;
+  margin-right:3px;
+  vertical-align: text-top;
 }
 
 /* 伙伴头部展示 */
@@ -305,4 +322,41 @@ textarea.antInput {
   max-width: 100%;
   overflow-y: hidden;
   margin-top:10px;
+}
+
+/* 场景输入框 */
+.sceneEditor{
+  padding: 5px;
+  max-height: 262px;
+  width: -webkit-calc(100% - 150px);
+  width: -moz-calc(100% - 150px);
+  width: calc(100% - 150px);
+  color: #1a2029;
+  text-align: left;
+  line-height: 22px;
+  overflow-y: auto;
+  caret-color: #2454ff;
+  word-break: break-word;
+  font-size: 14px;
+}
+.sceneEditor p{
+  padding-left: 15px;
+  margin-bottom: 10px;
+  margin-top:0;
+}
+.sceneTitle{
+  font-weight: 500;
+}
+.sceneEditor span{
+  display: inline-block;
+  white-space: pre-wrap;
+  padding:0 5px;
+}
+.sceneEditor span.normal{
+  background:#D2D2D2;
+  border-radius:5px;
+}
+.sceneEditor span.editorStutas{
+  border-radius:5px;
+  border:1px solid #585858;
 }
