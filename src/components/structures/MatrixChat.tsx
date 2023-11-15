@@ -118,6 +118,7 @@ import { ActionPayload } from "../../dispatcher/payloads";
 import { SummarizedNotificationState } from "../../stores/notifications/SummarizedNotificationState";
 import Views from "../../Views";
 import { ViewRoomPayload } from "../../dispatcher/payloads/ViewRoomPayload";
+import { ViewAiChatPayload } from "../../dispatcher/payloads/ViewAiChatPayload";
 import { ViewHomePagePayload } from "../../dispatcher/payloads/ViewHomePagePayload";
 import { AfterLeaveRoomPayload } from "../../dispatcher/payloads/AfterLeaveRoomPayload";
 import { DoAfterSyncPreparedPayload } from "../../dispatcher/payloads/DoAfterSyncPreparedPayload";
@@ -804,8 +805,8 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                 this.viewHome(payload.justRegistered);
                 break;
             case Action.ViewAiChatPage:
-                // 参照 case Action.ViewHomePage写的, 但不知道在哪调用...
-                this.viewAiChat(payload.justRegistered);
+                // [syner] 参照 case Action.ViewHomePage写的, 但不知道在哪调用?
+                this.viewAiChat(payload as ViewAiChatPayload);
                 break;
             case Action.ViewStartChatOrReuse:
                 this.chatCreateOrReuse(payload.user_id);
@@ -1113,17 +1114,38 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
     }
 
     // [syner] 参照viewHome写了一个viewAiChat, 但我还不知道在哪儿调用它...
-    private viewAiChat(justRegistered = false): void {
-        // The home page requires the "logged in" view, so we'll set that.
+    private viewAiChat(aiChatInfo: ViewAiChatPayload): void {
+        
         this.setStateForNewView({
             view: Views.LOGGED_IN,
-            justRegistered,
+            justRegistered: false,
             currentRoomId: null,
         });
+
+        let url_hash = "aichat/#" + aiChatInfo.aichat_type;
+        if( aiChatInfo.aichat_id ) {
+            url_hash += ":" + aiChatInfo.aichat_id;
+        }
+
         this.setPage(PageType.AiChat);
-        this.notifyNewScreen("aichat");
+        this.notifyNewScreen(url_hash);
         ThemeController.isLogin = false;
         this.themeWatcher.recheck();
+
+        // this.setState(
+        //     {
+        //         view: Views.LOGGED_IN,
+        //         page_type: PageType.AiChat,
+
+        //     },
+        //     () => {
+        //         ThemeController.isLogin = false;
+        //         this.themeWatcher.recheck();
+        //         this.notifyNewScreen("aichat/#aigent:yushiwei2", true);
+        //     }
+
+        // );
+
     }
 
     private viewUser(userId: string, subAction: string): void {
@@ -1834,11 +1856,23 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
             dis.dispatch({
                 action: Action.ViewHomePage,
             });
-        } else if (screen === "aichat") {
+        } else if (screen.indexOf("aichat/") === 0 ) {
             // [syner] 添加url路由 aichat
-            dis.dispatch({
+
+            // dis.dispatch({
+            //     action: Action.ViewAiChatPage,
+            // });
+
+            const ai_chat_page:string = screen.substring(7);
+            const para_list:string[] = ai_chat_page.split(/[#:]/);
+
+            const payload: ViewAiChatPayload = {
                 action: Action.ViewAiChatPage,
-            });
+                aichat_type: para_list.length>1 ? para_list[1] : "",
+                aichat_id: para_list.length>2 ? para_list[2] : ""
+            };
+            dis.dispatch(payload);
+            
         } else if (screen === "start") {
             this.showScreen("home");
             dis.dispatch({

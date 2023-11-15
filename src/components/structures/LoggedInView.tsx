@@ -80,6 +80,7 @@ import { ConfigOptions } from "../../SdkConfig";
 import AIChatPage from "../syner/AiChatPage";
 import ExploreAgent from "../syner/ExploreAgent";
 import ExploreSpace from "../syner/ ExploreSpace";
+import AiChatContainer from "../syner/AiChatContainer";
 
 // We need to fetch each pinned message individually (if we don't already have it)
 // so each pinned message may trigger a request. Limit the number per room for sanity.
@@ -656,9 +657,7 @@ class LoggedInView extends React.Component<IProps, IState> {
 
             // to-do: [syner] 待添加AIChat处理逻辑 by 王远  
             case PageTypes.AiChat:
-                // pageElement = <AIChatPage />;
-                // pageElement = <ExploreAgent />;
-                pageElement = <ExploreSpace />;
+                pageElement = <AiChatContainer />
                 break;
 
             case PageTypes.UserView:

@@ -46,8 +46,6 @@ import PosthogTrackers from "../../PosthogTrackers";
 import PageType from "../../PageTypes";
 import { UserOnboardingButton } from "../views/user-onboarding/UserOnboardingButton";
 import LeftAiChat from "../syner/LeftAiChat";
-import LeftAgentChat from "../syner/LeftAgentChat";
-import LeftLlmChat from "../syner/LeftLlmChat";
 import LeftHome from "../syner/LeftHome";
 
 interface IProps {
@@ -394,8 +392,7 @@ export default class LeftPanel extends React.Component<IProps, IState> {
         // [syner] 添加AI对话左边栏 [Start]
         const leftAiChatList = (
             <div>
-                <LeftLlmChat />
-                <LeftAgentChat />
+                <LeftAiChat />
             </div>
         );
 

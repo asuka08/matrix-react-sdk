@@ -43,6 +43,7 @@ const loggedInPageTypeMap: Record<PageType, ScreenName> = {
     [PageType.HomePage]: "Home",
     [PageType.RoomView]: "Room",
     [PageType.UserView]: "User",
+    [PageType.AiChat]: "Home",      // [syner] TODO: 这里需要修改, 添加 ScreenEvent 的类型
 };
 
 export default class PosthogTrackers {
