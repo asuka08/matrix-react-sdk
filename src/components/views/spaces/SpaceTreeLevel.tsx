@@ -137,7 +137,46 @@ export const SpaceButton: React.FC<IButtonProps> = ({
     const activateSpace = (): void => {
         if (spaceKey) SpaceStore.instance.setActiveSpace(spaceKey);
     };
-    const onClick = props.onClick ?? (selected && space ? viewSpaceHome : activateSpace);
+
+    // [syner start]  添加 viewAiChat, viewAigent, viewAiSpace 三个按钮的点击响应函数
+    const viewSpaceAiChat = (): void => {
+        // console.log("viewSpaceAiChat 11111111")
+        defaultDispatcher.dispatch({ action: Action.ViewAiChatPage, aichat_type: "llm" }, true);
+    }
+
+    const viewSpaceAiAgent = (): void => {
+        // console.log("viewSpaceAiAgent 222222")
+        defaultDispatcher.dispatch({ action: Action.ViewAiChatPage, aichat_type: "agent" }, true);
+    }
+
+    const viewSpaceAiSquare = (): void => {
+        console.log("viewSpaceAiAgent 33333333")
+        defaultDispatcher.dispatch({ action: Action.ViewAiChatPage, aichat_type: "square" }, true);
+    }
+
+    const viewSpaceAiGround = (): void => {
+        // console.log("viewSpaceAiGround 333333")
+        defaultDispatcher.dispatch({ action: Action.ViewAiChatPage, aichat_type: "ground" }, true);
+    }
+    // [syner end]
+
+    // [syner] 由原来的const, 改成let
+    let onClick = viewSpaceHome
+
+    // [syner start] 判断spaceKey, 修改onClick为相应的函数
+    if( spaceKey === "aichat-space" ) {
+        onClick = viewSpaceAiChat;
+    } else if( spaceKey === "aiagent-space" ) {
+        onClick = viewSpaceAiAgent;
+    } else if ( spaceKey === "aisquare-space" ) {
+        console.log("add viewSpaceAiSquare call back 33333");
+        onClick = viewSpaceAiSquare;
+    // } else if( spaceKey === "aiground-space" ) {
+    //     // console.log("add viewSpaceAiGround call back 33333")
+    //     onclick = viewSpaceAiGround;
+    } else {
+        onClick = props.onClick ?? (selected && space ? viewSpaceHome : activateSpace);
+    }
 
     return (
         <AccessibleTooltipButton

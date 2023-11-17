@@ -166,6 +166,67 @@ const HomeButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelCollapsed
     );
 };
 
+// [syner] 添加 AiChatButton 王远
+const AiChatButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelCollapsed }) => {
+    
+    return (
+        <MetaSpaceButton
+            spaceKey={MetaSpace.AiChat}
+            className="mx_SpaceButton_favourites"
+            selected={selected}
+            isPanelCollapsed={isPanelCollapsed}
+            label={getMetaSpaceName(MetaSpace.AiChat)}
+            notificationState={SpaceStore.instance.getNotificationState(MetaSpace.AiChat)}
+            size="32px"
+        />
+    );
+}
+
+// [syner] 添加 AiAgentButton 王远
+const AiAgentButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelCollapsed }) => {
+    return (
+        <MetaSpaceButton
+            spaceKey={MetaSpace.AiAgent}
+            className="mx_SpaceButton_favourites"
+            selected={selected}
+            isPanelCollapsed={isPanelCollapsed}
+            label={getMetaSpaceName(MetaSpace.AiAgent)}
+            notificationState={SpaceStore.instance.getNotificationState(MetaSpace.AiAgent)}
+            size="32px"
+        />
+    );
+}
+
+// [syner] 添加 AiSqureButton 王远
+const AiSquareButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelCollapsed }) => {
+    return (
+        <MetaSpaceButton
+            spaceKey={MetaSpace.AiSquare}
+            className="mx_SpaceButton_favourites"
+            selected={selected}
+            isPanelCollapsed={isPanelCollapsed}
+            label={getMetaSpaceName(MetaSpace.AiSquare)}
+            notificationState={SpaceStore.instance.getNotificationState(MetaSpace.AiSquare)}
+            size="32px"
+        />
+    );
+}
+
+// [syner] 添加 AiAgentButton 王远
+const AiGroundButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelCollapsed }) => {
+    return (
+        <MetaSpaceButton
+            spaceKey={MetaSpace.AiGround}
+            className="mx_SpaceButton_favourites"
+            selected={selected}
+            isPanelCollapsed={isPanelCollapsed}
+            label={getMetaSpaceName(MetaSpace.AiGround)}
+            notificationState={SpaceStore.instance.getNotificationState(MetaSpace.AiGround)}
+            size="32px"
+        />
+    );
+}
+
 const FavouritesButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelCollapsed }) => {
     return (
         <MetaSpaceButton
@@ -262,6 +323,13 @@ const metaSpaceComponentMap: Record<MetaSpace, typeof HomeButton> = {
     [MetaSpace.Favourites]: FavouritesButton,
     [MetaSpace.People]: PeopleButton,
     [MetaSpace.Orphans]: OrphansButton,
+
+    // [syner start] 添加 AiChatButton, AiAgentButton, AiSpace 三个按钮 王远
+    [MetaSpace.AiChat]: AiChatButton,
+    [MetaSpace.AiAgent] : AiAgentButton,
+    [MetaSpace.AiSquare] : AiSquareButton,
+    [MetaSpace.AiGround] : AiGroundButton
+    // [syner end]
 };
 
 interface IInnerSpacePanelProps extends DroppableProvidedProps {
@@ -278,10 +346,25 @@ const InnerSpacePanel = React.memo<IInnerSpacePanelProps>(
         const [invites, metaSpaces, actualSpaces, activeSpace] = useSpaces();
         const activeSpaces = activeSpace ? [activeSpace] : [];
 
-        const metaSpacesSection = metaSpaces.map((key) => {
+        // [syner] 新建一个 metaSpaces2，将 AiChatButton, AiAgentButton,  AiSpaceButton 放在 HomeButton 后面 王远
+        let metaSpaces2:MetaSpace[] = [];
+        for (let i = 0; i < metaSpaces.length; i++) {
+            metaSpaces2.push(metaSpaces[i]);
+            if (metaSpaces[i] == MetaSpace.Home) {
+                metaSpaces2.push(MetaSpace.AiChat);
+                metaSpaces2.push(MetaSpace.AiAgent);
+                metaSpaces2.push(MetaSpace.AiSquare);
+                // metaSpaces2.push(MetaSpace.AiGround);
+                
+            }
+        }
+
+        // [syner] 这里原本是: const metaSpacesSection = metaSpaces.map((key) => { 
+        const metaSpacesSection = metaSpaces2.map((key) => {
             const Component = metaSpaceComponentMap[key];
             return <Component key={key} selected={activeSpace === key} isPanelCollapsed={isPanelCollapsed} />;
         });
+        
 
         return (
             <IndicatorScrollbar

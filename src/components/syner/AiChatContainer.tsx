@@ -14,15 +14,6 @@ const AiChatContainer: React.FC = () => {
         setHash(currentHash);
     }, []);
 
-    // const ai_chat_page:string = screen.substring(7);
-    // const para_list:string[] = ai_chat_page.split(/[#:]/);
-
-    // const payload: ViewAiChatPayload = {
-    //     action: Action.ViewAiChatPage,
-    //     aichat_type: para_list.length>1 ? para_list[1] : "",
-    //     aichat_id: para_list.length>2 ? para_list[2] : ""
-    // };
-    // dis.dispatch(payload);
 
     /*
     分解形如 #/aichat/#agent:yushiwei 这样的字符串
@@ -50,7 +41,7 @@ const AiChatContainer: React.FC = () => {
         pageElement = <AIChatPage />;
     } else if( page_type === "agent" ) {
         pageElement = <ExploreAgent />;
-    } else if ( page_type === "space" ) {
+    } else if ( page_type === "square" ) {
         pageElement = <ExploreSpace />;
     }
 

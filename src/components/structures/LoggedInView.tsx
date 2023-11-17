@@ -77,9 +77,6 @@ import { monitorSyncedPushRules } from "../../utils/pushRules/monitorSyncedPushR
 import { ConfigOptions } from "../../SdkConfig";
 
 // [syner] by 王远
-import AIChatPage from "../syner/AiChatPage";
-import ExploreAgent from "../syner/ExploreAgent";
-import ExploreSpace from "../syner/ ExploreSpace";
 import AiChatContainer from "../syner/AiChatContainer";
 
 // We need to fetch each pinned message individually (if we don't already have it)
