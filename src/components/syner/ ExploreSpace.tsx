@@ -23,6 +23,9 @@ const ExploreSpace: React.FC = () => {
                 <DiscoverSpace />
                 <DiscoverSpace />
                 <DiscoverSpace />
+                <DiscoverSpace />
+                <DiscoverSpace />
+                <DiscoverSpace />
             </div>
         </div>
     );
