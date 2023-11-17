@@ -43,7 +43,12 @@
     width:136px;
     height:200px;
     border-radius: 10px;
-    background: #2D5C6D;
+    overflow: hidden;
+}
+.agentBox .bgpic img{
+    max-width: 100%;
+    width:auto;
+    border-radius: 10px;
 }
 .agentIntro{
     position:absolute;
@@ -66,7 +71,7 @@
 }
 
 .agentIntro .intro{
-    height:48px; 
+    display: -webkit-box;
     overflow: hidden;  
     text-overflow: ellipsis;   
     display: -webkit-box;  

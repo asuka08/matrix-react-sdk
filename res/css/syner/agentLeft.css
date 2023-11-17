@@ -1,0 +1,77 @@
+/* agentLeft.css */
+ 
+  .leftPartner {
+    position: relative;
+    display: flex;   
+    align-items: center;  
+    justify-content: center;  
+    padding: 10px;
+    flex-wrap: nowrap;
+    margin-bottom: 2px;
+  }
+
+  .leftPartnerPic{  
+    width: 40px;  
+    height: 40px;  
+    border-radius: 50%;  
+    object-fit: cover;  
+    flex:0 1 auto; 
+    overflow:hidden;
+    margin-right:10px;
+  } 
+  .leftPartnerPic img{
+    max-width:100%;
+    width:auto;
+  }
+  .leftPartner .intro{
+    flex: 1;
+  }
+  .leftPartner h5{
+    margin:0;
+    font-size: 14px;
+    color:#2D5C6D;
+  }
+  .leftPartner p {
+    width: 80%;
+    font-size: 12px;  
+    margin-top: 5px;
+    margin-bottom:0;
+    color:#9A9A9A;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }  
+
+  .leftPartner  .timeShow{
+    position:absolute;
+    right:10px;
+    top:10px;
+    font-size: 12px;
+  }
+  .leftPartner .editButton{
+    display: none;
+    position: absolute;
+    right: 10px;
+    bottom:6px;
+  }
+  .leftPartner.current,.leftPartner:hover{
+    transition: all 0.2s;
+    background: #fff;
+  }
+  .leftPartner.current .editButton,.leftPartner:hover .editButton{
+    display: block;
+  }
+  .leftPartner .gotop, .leftPartner .deleteBtn{
+    display: inline-block;
+    width:14px;
+    height:14px;
+    background: url(../../img/syner/icon_gotop.svg) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+  }
+  .leftPartner .gotop{
+    margin-right:3px;
+  }
+  .leftPartner .deleteBtn{
+    background-image: url(../../img/syner/icon_close.svg);
+  }

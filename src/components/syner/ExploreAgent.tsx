@@ -15,7 +15,7 @@ const ExploreAgent: React.FC = () => {
             </div>
             <div className='agentShow'>
                 <div className='agentBox'>
-                    <div className='bgpic'></div>
+                    <div className='bgpic'><img src='/welcome/syner/temp/agentbg.png'></img></div>
                     <div className='viewTag'>1.6万</div>
                     <div className='agentIntro'>
                         <h4>李白</h4>
@@ -24,7 +24,7 @@ const ExploreAgent: React.FC = () => {
                     </div>
                 </div>
                 <div className='agentBox'>
-                    <div className='bgpic'></div>
+                    <div className='bgpic'><img src='/welcome/syner/temp/agentbg.png'></img></div>
                     <div className='viewTag'>3119</div>
                     <div className='agentIntro'>
                         <h4>阿尔伯特·爱因斯坦</h4>

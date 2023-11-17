@@ -14,6 +14,7 @@ const ExploreSpace: React.FC = () => {
                 <p>与伙伴一起探索最新知识</p>
                 <div className='topInput'>
                     <input placeholder='搜索社区'></input>
+                    <div className='topSearchButton'></div>
                 </div>
             </div>
             <div className='exploreTitle'><h3>特色社区</h3></div>

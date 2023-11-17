@@ -67,7 +67,7 @@
 
 .spaceMeta {
   position:absolute;
-  width:90%;
+  width:100%;
   left:10px;
   bottom:6px;
   display: flex;
@@ -78,6 +78,9 @@
 
 .sapceViews, .spaceLikes {
   display: inline-block;
+}
+.spaceLikes{
+  margin-right: 20px;
 }
 
 .sapceViews::before, .spaceLikes::before{

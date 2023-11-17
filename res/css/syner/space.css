@@ -30,26 +30,31 @@
     text-indent: 12px;
     outline: 0;
 }
-.topInput::after{
-    display: inline-block;
+.topSearchButton{
     position: absolute;
     right:8px;
     top:8px;
-    content: "";
     width:16px;
     height: 16px;
     background: url(../../img/syner/search.svg) no-repeat;
     background-size: contain;
+    cursor:pointer;
 }
 
 .spaceShow{
     display: flex;
     padding:20px 30px;
-    min-width: 900px;
+    max-width: 1040px; 
     justify-content:center;
+    align-items: center;
+    margin:auto;
+}
+.exploreTitle{
+    max-width: 1070px;
+    padding-left:30px;
+    margin:auto;
 }
 .exploreTitle h3{
-    padding-left:30px;
     font-size:16px;
     font-weight: 500;
     text-align: left;
