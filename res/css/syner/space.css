@@ -30,29 +30,42 @@
     text-indent: 12px;
     outline: 0;
 }
-.topInput::after{
-    display: inline-block;
+.topSearchButton{
     position: absolute;
     right:8px;
     top:8px;
-    content: "";
     width:16px;
     height: 16px;
     background: url(../../img/syner/search.svg) no-repeat;
     background-size: contain;
+    cursor:pointer;
 }
 
 .spaceShow{
     display: flex;
-    padding:20px 30px;
-    min-width: 900px;
-    justify-content:center;
+    padding:20px 30px; 
+    align-items: center;
+    flex-wrap: wrap;
+}
+.exploreTitle{
+    padding-left:30px;
 }
 .exploreTitle h3{
-    padding-left:30px;
     font-size:16px;
     font-weight: 500;
     text-align: left;
     margin-left:10px;
     margin-bottom:0;
+}
+@media screen and (max-width:1440px){
+    .spaceItem{
+        width: 228px; 
+        flex: none;
+    }
+}
+@media screen and (min-width:1800px){
+    .spaceItem{
+        width: 285px;
+        flex: none;
+    }
 }

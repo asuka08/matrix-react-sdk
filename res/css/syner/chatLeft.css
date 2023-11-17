@@ -1,0 +1,239 @@
+/* chatLeft.css */
+ .leftButtonDiv{
+    padding:0 10px;
+    display: flex;
+    justify-content: center;
+ }
+.newButton{
+    width:100%;
+    max-width: 156px;
+    height:45px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background-color: #2D5C6D;
+    line-height: 45px;
+    color:#fff;
+    font-size: 16px;
+}
+.newButton .plusIcon{
+    display: inline-block;
+    width:18px;
+    height: 18px;
+    background: url(../../img/syner/plus_icon.svg) no-repeat;
+    background-size: cover;
+    margin-right: 5px;
+    vertical-align: text-top;
+}
+ .leftSearchDiv{
+    padding:15px;
+ }
+
+ .leftSearch{
+    position: relative;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    text-align: left;
+    padding-left: 30px;
+    height: 30px;
+    margin:auto;
+    overflow: hidden;
+}
+.leftSearch input{
+    border:none;
+    border-radius:5px 0 0 5px;
+    width:100%;
+    height: 30px;
+    line-height: 30px;
+    outline: 0;
+    font-size: 14px;
+}
+.leftSearchButton{
+    position: absolute;
+    left:8px;
+    top:8px;
+    width:16px;
+    height: 16px;
+    background: url(../../img/syner/search.svg) no-repeat;
+    background-size: contain;
+    cursor:pointer;
+} 
+.recommendList{
+    padding-left:15px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: -10px;
+    padding-bottom:15px;
+    align-items: center;
+}
+.recommendItem{
+    padding: 4px 10px;
+    box-sizing: border-box;
+    height: 28px;
+    margin-right: 7px;
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 400;
+    min-width: 55px;
+    text-align: center;
+    background: #f8f8f8;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.recommendItem:hover{
+    color:#2D5C6D;
+}
+.recommendItem.active{
+    background-color: #2D5C6D;
+    color:#fff;
+}
+.leftChatItem{
+    position: relative;
+    padding:10px 15px;
+    line-height: 30px;
+    margin-bottom: 2px;
+    color:#666;
+    font-size: 14px;
+}
+
+.leftChatItem.current,.leftChatItem:hover{
+    background-color: #fff;
+    color: #2D5C6D;
+}
+.docItemIcon,.chatItemIcon{
+    display: inline-block;
+    vertical-align: middle;
+    width:30px;
+    height:30px;
+}
+.docItemIcon{
+    background: url(../../img/syner/doc_icon.svg) no-repeat;
+    background-size: cover;
+}
+.chatItemIcon{
+    background: url(../../img/syner/chat_icon.svg) no-repeat;
+    background-size: cover;
+}
+
+.leftChatDelete{
+    display: none;
+    position: absolute;
+    right:10px;
+    top:15px;
+    width:18px;
+    height: 18px;
+    background: url(../../img/syner/delete.svg) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+.leftChatItem.current .leftChatDelete,.leftChatItem:hover .leftChatDelete{
+    display: block;
+}
+/* 左侧大标题 */
+.leftLargeTitle{
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.leftLargeTitle .title{
+    font-size: 16px;
+}
+.leftLargeTitle .foldButton{
+    width:16px;
+    height: 16px;
+    background: url(../../img/syner/fold_icon.svg) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+/* prompt */
+.definePrompt{
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.definePrompt .tt{
+    color:#0F40F5;
+    font-size: 14px;
+}
+.definePrompt .clickArrow{
+    width: 15px;
+    height: 15px;
+    background: url(../../img/syner/arrow_icon.svg) no-repeat;
+    background-size: cover;
+}
+.promptList{
+    display: flex;
+    padding:0 10px;
+}
+.promptListLeft{
+    margin-right:10px;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: flex-start;
+    -moz-box-align: center;
+    -webkit-box-align: center;
+}
+.promptListRight{
+    width:50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.promptItem{
+    background-color:#D9D9D8;
+    padding:5px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+.promptItem .tt{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.promptItem .text{
+    color:#666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+}
+.promptItem .heatBottom{
+    display: flex;
+    justify-content: space-between;
+    margin-top:5px;
+    width: 100%;
+    align-items: center;
+}
+.viewNum{
+    text-align: left;
+    color: #666;
+    font-size: 12px;  
+}
+.viewNum::before{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    content: "";
+    vertical-align: text-top;
+    background: url(../../img/syner/view_icon.svg) no-repeat;
+    background-size: cover;
+}
+.editIconButton{
+    width:18px;
+    height: 18px;
+    background: url(../../img/syner/edit_icon.svg) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
