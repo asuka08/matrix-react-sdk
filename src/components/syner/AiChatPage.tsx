@@ -1,25 +1,79 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import '../../../res/css/syner/aiChat.css';
 
 const AIChatPage: React.FC = () => {
+    const [inputText, setInputText] = useState<string>('');
+    const [chatHistory, setChatHistory] = useState<Array<{ type: 'user' | 'answer', content: string }>>([]);
+    const [currentResponse, setCurrentResponse] = useState<string>('');
+    const [isFetching, setIsFetching] = useState<boolean>(false);
+
+    // 发送问题消息的函数
+    const sendMessage = async () => {
+        if (inputText.trim() && !isFetching ) {
+            setIsFetching(true);
+            let question = inputText.trim();
+            setChatHistory(prev => [...prev, { type: 'user', content: question }]); // 用户问题添加进历史记录
+            setInputText(''); // 清空输入框
+
+            if( currentResponse ) {
+                setChatHistory(prev => [...prev, { type: 'answer', content: currentResponse }]); // 确保上一个响应被添加
+                setCurrentResponse(''); // 清空当前响应
+            }
     
+            try {
+                let model_id = "debug";
+                const response = await fetch(`http://localhost:8000/aichat/?question=${encodeURIComponent(question)}&model=${model_id}`);
+                if (!response.body) {
+                    throw new Error('Response body is null');
+                }
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+
+                let response_text = '';
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) { 
+                        if (response_text) {
+                            setCurrentResponse('');
+                            setChatHistory(prev => [...prev, { type: 'answer', content: response_text }]); // 添加完整响应
+                        }
+                        break;
+                    }
+
+                    response_text += decoder.decode(value, { stream: true });
+                    setCurrentResponse(response_text);
+
+                    // 将流式响应的每个片段添加到聊天记录
+                    // const textChunk = decoder.decode(value, { stream: true });
+                    // setCurrentResponse(prevResponse => prevResponse + textChunk);
+                }
+
+            } catch (error) {
+                console.error('请求失败:', error);
+            } finally {
+                setIsFetching(false);
+            }
+        }
+    };
+    
+
+    // 处理输入框变化的函数
+    const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setInputText(e.target.value);
+    }
+
+    // 处理回车的函数
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter' && inputText.trim() && !isFetching) {
+            e.preventDefault();
+            sendMessage();
+        }
+    }
 
     return (
         <div className="aichat_container">
-            <div className="chatTopbar">
-                <div className='partnerDiv'>
-                    <div className='goback'></div>
-                    <div className='headPic'><img src='/welcome/syner/temp/headpic.jpeg'></img></div>
-                    <div className='introText'>
-                        <p className='colorText'><span className='boldText'>余世维老师</span> @scona官方</p>
-                        <p>我是你们的老朋友余世维，您可以就企业管理、领导力、执行力向我咨询，我将与你一起进步！</p>
-                    </div>
-                    <div className='addTeam'>
-                        <div className='addButton'>添加到团队</div>
-                    </div>
-                </div>
-            </div>
+
             <div className="chatTopbar">
                <div className='topbarNewchat'>
                     <p className='newText'>新对话</p>
@@ -28,79 +82,49 @@ const AIChatPage: React.FC = () => {
                     </div>
                 </div>
             </div>
+
             <div className='chatContainer'>
-            <div className='chatRow'> 
-                    <div className='chatCon'>
-                        <div className='chatPic'><img src='/welcome/syner/temp/headpic.jpeg'></img></div>
-                        <div className='fileCon'>
-                            <span className='fileStyle'>DOCX</span>北京5个小众又精致的露营地.DOCX
+                {chatHistory.map((msg, index) => (
+                    <div className='chatRow'> 
+                        <div className='chatCon'>
+                            <div className='chatPic'><img src={`/welcome/syner/temp/avatar_${msg.type}.jpg`}></img></div>
+                            <div className={`${msg.type}Con`}>{msg.content}</div>
                         </div>
                     </div>
-                </div>
-                <div className='chatRow'> 
-                    <div className='chatCon'>
-                        <div className='chatPic'><img src='/welcome/syner/temp/headpic.jpeg'></img></div>
-                        <div className='normalCon'>国企改革势在必行吗？</div>
-                    </div>
-                </div>
-                <div className='chatRow'>
-                    <div className='chatCon'>
-                        <div className='chatPic'><img src='/welcome/syner/temp/headpic.jpeg'></img></div>
-                        <div className='answerCon'>
-                            是的，国企改革势在必行。随着市场经济的发展，国企面临着越来越多的挑战和压力，需要进行改革以适应市场变化和竞争。改革可以包括加强企业的管理、提高效率、加强监督等方面，以提升企业的竞争力和可持续发展能力。同时，国企改革也需要注重公平和公正，保障员工的权益和利益。
-                        </div>
-                        <div className='answerButtons'>
-                            <span className='refresh'>重新回答</span>
-                            <span className='againGenerate'>重新生成</span>
-                            <p className='answerRightButton'>
-                                <span className='copyIcon'></span>
-                                <span className='shareIcon'></span>
-                                <span className='readIcon'></span>
-                            </p>
+                ))}
+                {currentResponse && currentResponse.length > 0 && (
+                    <div className='chatRow'> 
+                        <div className='chatCon'>
+                            <div className='chatPic'><img src='/welcome/syner/temp/avatar_answer.jpg'></img></div>
+                            <div className='answerCon'>{currentResponse}</div>
                         </div>
                     </div>
-                </div>
-                <div className='tryTitle'>试着问问</div>
-                <div className='moreQuestion'>
-                    <span>国企面临的压力有哪些？</span>
-                    <span>国企需要适应什么样的市场？</span>
-                    <span>改革如何提高效率？</span>
-                </div>
+                )}
             </div>
 
             <div className='chatDiv'>
                 <div className='inner'>
                     <div className='chatBox'>
                         <div className='textareaBox'>
-                            <textarea className='antInput' placeholder='输入你想了解的内容，输入/调用灵感大全'></textarea>
+                            <textarea 
+                                className='antInput' 
+                                placeholder='输入你想了解的内容'
+                                value={inputText}
+                                onChange={handleInputChange}
+                                onKeyDown={handleKeyDown}
+                            ></textarea>
                         </div>
                         <div className='chatButton'>
                             <span className='uploatIcon'></span>
                             <span className='chatIcon'></span>
-                            <span className='sendIcon'></span>
+                            <span 
+                                className='sendIcon' 
+                                onClick={() => !isFetching && sendMessage()}
+                            ></span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div className='chatDiv'>
-                <div className='inner'>
-                    <div className='chatBox'>
-                        <div className='sceneEditor'>
-                            <p className='sceneTitle'>画一幅双十一购物节海报图</p>
-                            <p>主体：<span className='editorStutas'>散落在白色台面上香水、相机、电脑、高跟鞋、礼盒等</span></p>
-                            <p>背景：<span className='normal'>极简纯色</span></p>
-                            <p>画质：<span className='normal'>高清摄影</span></p>
-                        </div>
-                        <div className='chatButton'>
-                            <span className='uploatIcon'></span>
-                            <span className='chatIcon'></span>
-                            <span className='sendIcon'></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
 
         </div>
 
