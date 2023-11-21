@@ -6,7 +6,7 @@ import '../../../res/css/syner/ElemAgent.css';
 
 
 const dispatchAichatPage = (page_id:string) => {
-    dis.dispatch({ action: Action.ViewAiChatPage, aichat_type: "agent", aichat_id: page_id }, true);
+    dis.dispatch({ action: Action.ViewAiChatPage, aichat_type: "agent", aichat_id: page_id });
 }
 
 interface ElemAgentProps {

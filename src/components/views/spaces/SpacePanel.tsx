@@ -202,7 +202,7 @@ const AiSquareButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelColla
     return (
         <MetaSpaceButton
             spaceKey={MetaSpace.AiSquare}
-            className="mx_SpaceButton_favourites"
+            className="mx_SpaceButton_aisquare"
             selected={selected}
             isPanelCollapsed={isPanelCollapsed}
             label={getMetaSpaceName(MetaSpace.AiSquare)}
