@@ -2,22 +2,31 @@
 import React from 'react';
 import '../../../res/css/syner/DiscoverAgent.css';
 
-const DiscoverAgent: React.FC = () => {
+interface DiscoverAgentProps {
+    avatarUrl: string;
+    title: string;
+    description: string;
+    followerCount: number;
+    commentCount: number;
+    articleCount: number;
+}
+
+const DiscoverAgent: React.FC<DiscoverAgentProps> = ({ avatarUrl, title, description, followerCount, commentCount, articleCount }) => {
 
     return (
         <div className='agentItem'>
             <div className='homeIcon1'></div>
             <div className='agentIntroDiv'>
-                <img src="/welcome/syner/temp/agentpic.jpeg" className="agentPicture"/>
+                <img src={avatarUrl} className="agentPicture"/>
                 <div className="agentInfo">
-                    <h3>余世维老师</h3>
-                    <p>欢迎来到世维研习社，我是你们的老朋友世维</p>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
                 </div>
             </div>
             <div className="agentStatus">
-                <span className='status1'>100w+ 关注</span>
-                <span className='status2'>75 评论</span>
-                <span className='status3'>8 文章</span>
+                <span className='status1'>{followerCount} 关注</span>
+                <span className='status2'>{commentCount} 评论</span>
+                <span className='status3'>{articleCount} 文章</span>
             </div>
             <div className='homeIcon2'></div>
         </div>

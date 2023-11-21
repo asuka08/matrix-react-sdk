@@ -137,9 +137,30 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
                 <div className="moreLink">查看更多</div>
                 </div>
                 <div className="mx_HomePage_default_buttons discoverContainer">
-                    <DiscoverAgent />
-                    <DiscoverAgent />
-                    <DiscoverAgent />
+                    <DiscoverAgent
+                        avatarUrl="/welcome/syner/space/agent_avatar_yushiwei.png"
+                        title="余世维老师"
+                        description="欢迎来到世维研习社，我是你们的老朋友世维"
+                        followerCount={101}
+                        commentCount={102}
+                        articleCount={103}
+                     />
+                    <DiscoverAgent
+                        avatarUrl="/welcome/syner/space/agent_avatar_ai.png"
+                        title="AI领域专家"
+                        description="培养中国本土的AI智能化人才"
+                        followerCount={201}
+                        commentCount={202}
+                        articleCount={203}
+                     />
+                    <DiscoverAgent
+                        avatarUrl="/welcome/syner/space/agent_avatar_yushiwei.png"
+                        title="余世维老师"
+                        description="欢迎来到世维研习社，我是你们的老朋友世维"
+                        followerCount={201}
+                        commentCount={202}
+                        articleCount={203}
+                     />
                 </div>
                 <div className="discoverTitle">
                     <h2>发现社区</h2> 

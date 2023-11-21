@@ -38,9 +38,13 @@ const AiChatContainer: React.FC = () => {
 
     let pageElement;
     if( page_type === "llm" ) {
-        pageElement = <AIChatPage />;
+        pageElement = <AIChatPage pageType={page_type} pageId={page_id} />;
     } else if( page_type === "agent" ) {
-        pageElement = <ExploreAgent />;
+        if ( page_id ) {
+            pageElement = <AIChatPage pageType={page_type} pageId={page_id} />;
+        } else {
+            pageElement = <ExploreAgent />;
+        }
     } else if ( page_type === "square" ) {
         pageElement = <ExploreSpace />;
     }

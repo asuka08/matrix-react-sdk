@@ -2,11 +2,17 @@
 import React, { useEffect, useState } from 'react';
 import '../../../res/css/syner/aiChat.css';
 
-const AIChatPage: React.FC = () => {
+interface AIChatPageProps {
+    pageType: string;
+    pageId: string;
+}
+
+const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
     const [inputText, setInputText] = useState<string>('');
     const [chatHistory, setChatHistory] = useState<Array<{ type: 'user' | 'answer', content: string }>>([]);
     const [currentResponse, setCurrentResponse] = useState<string>('');
     const [isFetching, setIsFetching] = useState<boolean>(false);
+    const [hash, setHash] = useState<string>('');
 
     useEffect(() => {
         // 这里的代码会在组件加载（挂载）后执行
@@ -16,11 +22,15 @@ const AIChatPage: React.FC = () => {
             sendMessage(question);
         }
 
+        const currentHash = window.location.hash;
+        setHash(currentHash);
+
         // 如果需要在组件卸载时执行清理工作，可以在这里返回一个函数
         return () => {
             // 这里的代码会在组件卸载时执行
-            
         };
+
+
     }, []); 
 
     // 发送问题消息的函数
@@ -43,7 +53,7 @@ const AIChatPage: React.FC = () => {
             }
     
             try {
-                let model_id = "debug";
+                let model_id = getModelId();
                 const response = await fetch(`http://localhost:8000/aichat/?question=${encodeURIComponent(question_to_send)}&model=${model_id}`);
                 if (!response.body) {
                     throw new Error('Response body is null');
@@ -107,19 +117,30 @@ const AIChatPage: React.FC = () => {
         return item.value;
     }
 
+    // 获取模型ID
+    const getModelId = () => {
+
+        let model_id;
+        if(pageId === "yushiwei") {
+            model_id = "yushiwei";
+        } else {
+            model_id = "openai";
+        }
+        return model_id;
+    }
+
     return (
         <div className="aichat_container">
-
             <div className="chatTopbar">
                <div className='topbarNewchat'>
-                    <p className='newText'>新对话</p>
+                    <p className='newText'>{getModelId()}</p>
                     <div className='rightButton'>
                         <div className='sourceButton'><img src='/welcome/syner/temp/headpic.jpeg'></img>Cona聚合</div>
                     </div>
                 </div>
             </div>
-
-            <div className='chatContainer'>
+            
+            <div className='chatContainer' >
                 {chatHistory.map((msg, index) => (
                     <div className='chatRow'> 
                         <div className='chatCon'>
@@ -144,7 +165,7 @@ const AIChatPage: React.FC = () => {
                         <div className='textareaBox'>
                             <textarea 
                                 className='antInput' 
-                                placeholder='输入你想了解的内容'
+                                placeholder='请输入问题，回车发送，Shift+回车换行'
                                 value={inputText}
                                 onChange={handleInputChange}
                                 onKeyDown={handleKeyDown}

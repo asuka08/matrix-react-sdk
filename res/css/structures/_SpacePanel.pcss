@@ -192,6 +192,9 @@ limitations under the License.
         }
 
         &.mx_SpaceButton_home,
+        &.mx_SpaceButton_aichat,
+        &.mx_SpaceButton_aiagent,
+        &.mx_SpaceButton_aisquare,
         &.mx_SpaceButton_favourites,
         &.mx_SpaceButton_people,
         &.mx_SpaceButton_orphans {
@@ -213,8 +216,8 @@ limitations under the License.
             mask-image: url("$(res)/img/element-icons/roomlist/favorite.svg");
         }
 
-        &.mx_SpaceButton_aiagent {
-            mask-image: url("$(res)/img/syner/roomlist_aiagent.png");
+        &.mx_SpaceButton_aiagent .mx_SpaceButton_icon::before {
+            mask-image: url("$(res)/img/syner/roomlist_aiagent.svg");
         }
 
         &.mx_SpaceButton_aisquare .mx_SpaceButton_icon::before {
