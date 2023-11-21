@@ -172,7 +172,7 @@ const AiChatButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelCollaps
     return (
         <MetaSpaceButton
             spaceKey={MetaSpace.AiChat}
-            className="mx_SpaceButton_favourites"
+            className="mx_SpaceButton_aichat"
             selected={selected}
             isPanelCollapsed={isPanelCollapsed}
             label={getMetaSpaceName(MetaSpace.AiChat)}
@@ -187,7 +187,7 @@ const AiAgentButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelCollap
     return (
         <MetaSpaceButton
             spaceKey={MetaSpace.AiAgent}
-            className="mx_SpaceButton_favourites"
+            className="mx_SpaceButton_aiagent"
             selected={selected}
             isPanelCollapsed={isPanelCollapsed}
             label={getMetaSpaceName(MetaSpace.AiAgent)}
@@ -207,21 +207,6 @@ const AiSquareButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelColla
             isPanelCollapsed={isPanelCollapsed}
             label={getMetaSpaceName(MetaSpace.AiSquare)}
             notificationState={SpaceStore.instance.getNotificationState(MetaSpace.AiSquare)}
-            size="32px"
-        />
-    );
-}
-
-// [syner] 添加 AiAgentButton 王远
-const AiGroundButton: React.FC<MetaSpaceButtonProps> = ({ selected, isPanelCollapsed }) => {
-    return (
-        <MetaSpaceButton
-            spaceKey={MetaSpace.AiGround}
-            className="mx_SpaceButton_favourites"
-            selected={selected}
-            isPanelCollapsed={isPanelCollapsed}
-            label={getMetaSpaceName(MetaSpace.AiGround)}
-            notificationState={SpaceStore.instance.getNotificationState(MetaSpace.AiGround)}
             size="32px"
         />
     );
@@ -328,7 +313,6 @@ const metaSpaceComponentMap: Record<MetaSpace, typeof HomeButton> = {
     [MetaSpace.AiChat]: AiChatButton,
     [MetaSpace.AiAgent] : AiAgentButton,
     [MetaSpace.AiSquare] : AiSquareButton,
-    [MetaSpace.AiGround] : AiGroundButton
     // [syner end]
 };
 

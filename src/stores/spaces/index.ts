@@ -35,7 +35,6 @@ export enum MetaSpace {
     AiChat = "aichat-space",    // [syner] 添加一个AI Chat 的MetaSpace by 王远
     AiAgent = "aiagent-space",       // [syner] 添加一个Agent 的MetaSpace by 王远
     AiSquare = "aisquare-space",       // [syner] 添加一个Square 的MetaSpace by 王远
-    AiGround = "aiground-space"       // [syner] 添加一个Space 的MetaSpace by 王远
 }
 
 export const getMetaSpaceName = (spaceKey: MetaSpace, allRoomsInHome = false): string => {
@@ -55,9 +54,7 @@ export const getMetaSpaceName = (spaceKey: MetaSpace, allRoomsInHome = false): s
         case MetaSpace.AiAgent: 
             return "AI伙伴";
         case MetaSpace.AiSquare:
-            return "发现广场"
-        case MetaSpace.AiGround: 
-            return "发现社区";
+            return "发现社区"
     }
 };
 
@@ -77,7 +74,6 @@ export function isMetaSpace(spaceKey?: SpaceKey): boolean {
         // [syner]
         spaceKey === MetaSpace.AiChat || 
         spaceKey === MetaSpace.AiAgent ||
-        spaceKey === MetaSpace.AiSquare ||
-        spaceKey === MetaSpace.AiGround
+        spaceKey === MetaSpace.AiSquare
     );
 }

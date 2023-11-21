@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../../res/css/syner/aiChat.css';
 
 const AIChatPage: React.FC = () => {
@@ -8,12 +8,33 @@ const AIChatPage: React.FC = () => {
     const [currentResponse, setCurrentResponse] = useState<string>('');
     const [isFetching, setIsFetching] = useState<boolean>(false);
 
+    useEffect(() => {
+        // 这里的代码会在组件加载（挂载）后执行
+        let question = getSessionStorage('aichat_text')
+        if(question) {
+            // setInputText(question);
+            sendMessage(question);
+        }
+
+        // 如果需要在组件卸载时执行清理工作，可以在这里返回一个函数
+        return () => {
+            // 这里的代码会在组件卸载时执行
+            
+        };
+    }, []); 
+
     // 发送问题消息的函数
-    const sendMessage = async () => {
-        if (inputText.trim() && !isFetching ) {
+    const sendMessage = async (question:string | null = null) => {
+        let question_to_send:string = '';
+        if(question) {
+            question_to_send = question.trim();
+        } else if (inputText.trim() ) {
+            question_to_send = inputText.trim();
+        }
+
+        if (question_to_send && !isFetching ) {
             setIsFetching(true);
-            let question = inputText.trim();
-            setChatHistory(prev => [...prev, { type: 'user', content: question }]); // 用户问题添加进历史记录
+            setChatHistory(prev => [...prev, { type: 'user', content: question_to_send }]); // 用户问题添加进历史记录
             setInputText(''); // 清空输入框
 
             if( currentResponse ) {
@@ -23,7 +44,7 @@ const AIChatPage: React.FC = () => {
     
             try {
                 let model_id = "debug";
-                const response = await fetch(`http://localhost:8000/aichat/?question=${encodeURIComponent(question)}&model=${model_id}`);
+                const response = await fetch(`http://localhost:8000/aichat/?question=${encodeURIComponent(question_to_send)}&model=${model_id}`);
                 if (!response.body) {
                     throw new Error('Response body is null');
                 }
@@ -69,6 +90,21 @@ const AIChatPage: React.FC = () => {
             e.preventDefault();
             sendMessage();
         }
+    }
+
+    // 获取sessionStorage数据，并检查是否过期
+    const getSessionStorage = (key: string) => {
+        const itemStr = sessionStorage.getItem(key);
+        if (!itemStr) {
+            return null;
+        }
+        const item = JSON.parse(itemStr);
+        const now = new Date();
+        if (now.getTime() > item.expiry) {
+            sessionStorage.removeItem(key);
+            return null;
+        }
+        return item.value;
     }
 
     return (
