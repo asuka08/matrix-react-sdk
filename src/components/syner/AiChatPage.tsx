@@ -12,7 +12,7 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
     const [chatHistory, setChatHistory] = useState<Array<{ type: 'user' | 'answer', content: string }>>([]);
     const [currentResponse, setCurrentResponse] = useState<string>('');
     const [isFetching, setIsFetching] = useState<boolean>(false);
-    const [hash, setHash] = useState<string>('');
+    // const [hash, setHash] = useState<string>('');
 
     useEffect(() => {
         // 这里的代码会在组件加载（挂载）后执行
@@ -22,8 +22,8 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
             sendMessage(question);
         }
 
-        const currentHash = window.location.hash;
-        setHash(currentHash);
+        // const currentHash = window.location.hash;
+        // setHash(currentHash);
 
         // 如果需要在组件卸载时执行清理工作，可以在这里返回一个函数
         return () => {

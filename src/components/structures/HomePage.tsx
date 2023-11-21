@@ -35,8 +35,8 @@ import EmbeddedPage from "./EmbeddedPage";
 
 // [syner] 
 import StartAIChat from "../syner/StartAIChat";
-import DiscoverAgent from "../syner/DiscoverAgent";
-import DiscoverSpace from "../syner/DiscoverSpace";
+import ElemAgent from "../syner/ElemAgent";
+import ElemSpace from "../syner/ElemSpace";
 
 const onClickSendDm = (ev: ButtonEvent): void => {
     PosthogTrackers.trackInteraction("WebHomeCreateChatButton", ev);
@@ -137,29 +137,26 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
                 <div className="moreLink">查看更多</div>
                 </div>
                 <div className="mx_HomePage_default_buttons discoverContainer">
-                    <DiscoverAgent
+                    <ElemAgent
                         avatarUrl="/welcome/syner/space/agent_avatar_yushiwei.png"
                         title="余世维老师"
                         description="欢迎来到世维研习社，我是你们的老朋友世维"
-                        followerCount={101}
-                        commentCount={102}
-                        articleCount={103}
+                        chatCount={101}
+                        modelId="yushiwei"
                      />
-                    <DiscoverAgent
+                    <ElemAgent
                         avatarUrl="/welcome/syner/space/agent_avatar_ai.png"
                         title="AI领域专家"
                         description="培养中国本土的AI智能化人才"
-                        followerCount={201}
-                        commentCount={202}
-                        articleCount={203}
+                        chatCount={201}
+                        modelId="yushiwei"
                      />
-                    <DiscoverAgent
+                    <ElemAgent
                         avatarUrl="/welcome/syner/space/agent_avatar_yushiwei.png"
                         title="余世维老师"
                         description="欢迎来到世维研习社，我是你们的老朋友世维"
-                        followerCount={201}
-                        commentCount={202}
-                        articleCount={203}
+                        chatCount={201}
+                        modelId="yushiwei"
                      />
                 </div>
                 <div className="discoverTitle">
@@ -167,7 +164,7 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
                     <div className="moreLink">查看更多</div>
                 </div>             
                 <div className="mx_HomePage_default_buttons discoverContainer">
-                    <DiscoverSpace 
+                    <ElemSpace 
                         bgImageUrl="/welcome/syner/space/space_bg_ai.png"
                         avatarUrl="/welcome/syner/space/space_avatart_ai.png"
                         title="AI研习社"
@@ -176,7 +173,7 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
                         memberCount={1111}
                     />
 
-                    <DiscoverSpace 
+                    <ElemSpace 
                         bgImageUrl="/welcome/syner/space/space_bg_yushiwei.png"
                         avatarUrl="/welcome/syner/space/space_avatar_yushiwei.png"
                         title="世维研习社"
@@ -185,7 +182,7 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
                         memberCount={2222}
                     />
                     
-                    <DiscoverSpace 
+                    <ElemSpace 
                         bgImageUrl="/welcome/syner/space/space_bg_book.png"
                         avatarUrl="/welcome/syner/space/space_avatar_book.png"
                         title="书氧圈"
@@ -194,7 +191,7 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
                         memberCount={3333}
                     />
                     
-                    <DiscoverSpace 
+                    <ElemSpace 
                         bgImageUrl="/welcome/syner/space/space_bg_film.png"
                         avatarUrl="/welcome/syner/space/space_avatar_film.png"
                         title="影史留痕"

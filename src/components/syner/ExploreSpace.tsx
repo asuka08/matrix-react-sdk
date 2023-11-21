@@ -1,7 +1,7 @@
 
 import React from 'react';
-import DiscoverSpace from "../syner/DiscoverSpace";
-import '../../../res/css/syner/DiscoverSpace.css';
+import ElemSpace from "./ElemSpace";
+import '../../../res/css/syner/ElemSpace.css';
 import '../../../res/css/syner/space.css';
 
 const ExploreSpace: React.FC = () => {
@@ -19,7 +19,7 @@ const ExploreSpace: React.FC = () => {
             </div>
             <div className='exploreTitle'><h3>特色社区</h3></div>
             <div className='spaceShow'>
-                <DiscoverSpace 
+                <ElemSpace 
                     bgImageUrl="/welcome/syner/space/space_bg_ai.png"
                     avatarUrl="/welcome/syner/space/space_avatart_ai.png"
                     title="AI研习社"
@@ -28,7 +28,7 @@ const ExploreSpace: React.FC = () => {
                     memberCount={1111}
                 />
 
-                <DiscoverSpace 
+                <ElemSpace 
                     bgImageUrl="/welcome/syner/space/space_bg_yushiwei.png"
                     avatarUrl="/welcome/syner/space/space_avatar_yushiwei.png"
                     title="世维研习社"
@@ -37,7 +37,7 @@ const ExploreSpace: React.FC = () => {
                     memberCount={2222}
                 />
                 
-                <DiscoverSpace 
+                <ElemSpace 
                     bgImageUrl="/welcome/syner/space/space_bg_book.png"
                     avatarUrl="/welcome/syner/space/space_avatar_book.png"
                     title="书氧圈"
@@ -46,7 +46,7 @@ const ExploreSpace: React.FC = () => {
                     memberCount={3333}
                 />
                 
-                <DiscoverSpace 
+                <ElemSpace 
                     bgImageUrl="/welcome/syner/space/space_bg_film.png"
                     avatarUrl="/welcome/syner/space/space_avatar_film.png"
                     title="影史留痕"
@@ -55,7 +55,7 @@ const ExploreSpace: React.FC = () => {
                     memberCount={4444}
                 />
 
-                <DiscoverSpace 
+                <ElemSpace 
                     bgImageUrl="/welcome/syner/space/space_bg_film.png"
                     avatarUrl="/welcome/syner/space/space_avatar_film.png"
                     title="影史留痕"
@@ -64,7 +64,7 @@ const ExploreSpace: React.FC = () => {
                     memberCount={5555}
                 />      
 
-                <DiscoverSpace 
+                <ElemSpace 
                     bgImageUrl="/welcome/syner/space/space_bg_film.png"
                     avatarUrl="/welcome/syner/space/space_avatar_film.png"
                     title="影史留痕"
@@ -73,7 +73,7 @@ const ExploreSpace: React.FC = () => {
                     memberCount={6666}
                 />
 
-                <DiscoverSpace 
+                <ElemSpace 
                     bgImageUrl="/welcome/syner/space/space_bg_film.png"
                     avatarUrl="/welcome/syner/space/space_avatar_film.png"
                     title="影史留痕"

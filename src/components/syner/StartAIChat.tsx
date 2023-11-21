@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
 import dis from "../../dispatcher/dispatcher";
+import { Action } from '../../dispatcher/actions';
 import '../../../res/css/syner/StartAIChat.css';
 import syner_logo from '../../../res/img/syner/syner_logo.png';
-import { Action } from '../../dispatcher/actions';
-import { set } from 'lodash';
+
 
 const StartAIChat: React.FC = () => {
     const [selectedButton, setSelectedButton] = useState<string | null>(null);

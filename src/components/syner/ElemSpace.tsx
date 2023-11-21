@@ -1,8 +1,8 @@
 
 import React from 'react';
-import '../../../res/css/syner/DiscoverSpace.css';
+import '../../../res/css/syner/ElemSpace.css';
 
-interface DiscoverSpaceProps {
+interface ElemSpaceProps {
     bgImageUrl: string;
     avatarUrl: string;
     title: string;
@@ -12,7 +12,7 @@ interface DiscoverSpaceProps {
 }
 
 
-const DiscoverSpace: React.FC<DiscoverSpaceProps> = ({ bgImageUrl, avatarUrl, title, description, onlineCount, memberCount }) => {
+const ElemSpace: React.FC<ElemSpaceProps> = ({ bgImageUrl, avatarUrl, title, description, onlineCount, memberCount }) => {
 
     return (
         <div className='spaceItem'>
@@ -34,4 +34,4 @@ const DiscoverSpace: React.FC<DiscoverSpaceProps> = ({ bgImageUrl, avatarUrl, ti
     );
 }
 
-export default DiscoverSpace;
+export default ElemSpace;

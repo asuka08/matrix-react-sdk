@@ -1,6 +1,8 @@
 
 import React from 'react';
 import '../../../res/css/syner/agent.css';
+import { ElemAgentPortrait } from './ElemAgent';
+
 
 const ExploreAgent: React.FC = () => {
     
@@ -14,24 +16,22 @@ const ExploreAgent: React.FC = () => {
                 <span className='selectTag'>国学文化</span>
             </div>
             <div className='agentShow'>
-                <div className='agentBox'>
-                    <div className='bgpic'><img src='/welcome/syner/temp/agentbg.png'></img></div>
-                    <div className='viewTag'>1.6万</div>
-                    <div className='agentIntro'>
-                        <h4>李白</h4>
-                        <div className='intro'>他的性格特点丰富多变，以高度自负、傲慢</div>
-                        <p>@讯飞星火</p>
-                    </div>
-                </div>
-                <div className='agentBox'>
-                    <div className='bgpic'><img src='/welcome/syner/temp/agentbg.png'></img></div>
-                    <div className='viewTag'>3119</div>
-                    <div className='agentIntro'>
-                        <h4>阿尔伯特·爱因斯坦</h4>
-                        <div className='intro'>他的性格特点丰富多变，以高度自负、傲慢</div>
-                        <p>@讯飞星火</p>
-                    </div>
-                </div>
+                <ElemAgentPortrait
+                    bgImageUrl="/welcome/syner/space/agent_title_libai.png"
+                    title="李白"
+                    description="他的性格特点丰富多变，以高度自负、傲慢"
+                    chatCount={1111}
+                    auther="讯飞星火"
+                    modelId='yushiwei'
+                />
+                <ElemAgentPortrait
+                    bgImageUrl="/welcome/syner/space/agent_title_einstein.png"
+                    title="爱因斯坦"
+                    description="不但是一个决定聪明的人,而且坚持不懈"
+                    chatCount={2222}
+                    auther="我是李翔"
+                    modelId='yushiwei'
+                />
                 
             </div> 
         </div>
