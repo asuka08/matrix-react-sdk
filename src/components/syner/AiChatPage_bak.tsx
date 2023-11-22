@@ -16,7 +16,7 @@ const AIChatPage: React.FC = () => {
                         <p>我是你们的老朋友余世维，您可以就企业管理、领导力、执行力向我咨询，我将与你一起进步！</p>
                     </div>
                     <div className='addTeam'>
-                        <div className='addButton'>添加到团队</div>
+                        <div className='addButton'><span className='joinIcon'></span>添加到团队</div>
                     </div>
                 </div>
             </div>

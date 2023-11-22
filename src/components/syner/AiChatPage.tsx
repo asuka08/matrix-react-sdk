@@ -140,23 +140,25 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
                 </div>
             </div>
             
-            <div className='chatContainer' >
-                {chatHistory.map((msg, index) => (
-                    <div className='chatRow'> 
-                        <div className='chatCon'>
-                            <div className='chatPic'><img src={`/welcome/syner/temp/avatar_${msg.type}.jpg`}></img></div>
-                            <div className={`${msg.type}Con`}>{msg.content}</div>
+            <div className='mainContainer'>
+                <div className='chatContainer' >
+                    {chatHistory.map((msg, index) => (
+                        <div className='chatRow'> 
+                            <div className='chatCon'>
+                                <div className='chatPic'><img src={`/welcome/syner/temp/avatar_${msg.type}.jpg`}></img></div>
+                                <div className={`${msg.type}Con`}>{msg.content}</div>
+                            </div>
                         </div>
-                    </div>
-                ))}
-                {currentResponse && currentResponse.length > 0 && (
-                    <div className='chatRow'> 
-                        <div className='chatCon'>
-                            <div className='chatPic'><img src='/welcome/syner/temp/avatar_answer.jpg'></img></div>
-                            <div className='answerCon'>{currentResponse}</div>
+                    ))}
+                    {currentResponse && currentResponse.length > 0 && (
+                        <div className='chatRow'> 
+                            <div className='chatCon'>
+                                <div className='chatPic'><img src='/welcome/syner/temp/avatar_answer.jpg'></img></div>
+                                <div className='answerCon'>{currentResponse}</div>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
 
             <div className='chatDiv'>
