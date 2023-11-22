@@ -1,7 +1,7 @@
 
 import React from 'react';
-import ElemSpace from "./ElemSpace";
-import '../../../res/css/syner/ElemSpace.css';
+import ElemSpace from "./DiscoverSpace";
+import '../../../res/css/syner/DiscoverSpace.css';
 import '../../../res/css/syner/space.css';
 
 const ExploreSpace: React.FC = () => {

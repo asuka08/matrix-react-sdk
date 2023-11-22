@@ -2,7 +2,7 @@
 import React from 'react';
 import dis from "../../dispatcher/dispatcher";
 import { Action } from '../../dispatcher/actions';
-import '../../../res/css/syner/ElemAgent.css';
+import '../../../res/css/syner/DiscoverAgent.css';
 
 
 const dispatchAichatPage = (page_id:string) => {
