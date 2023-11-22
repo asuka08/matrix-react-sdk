@@ -1,6 +1,6 @@
 
 import React from 'react';
-import '../../../res/css/syner/DiscoverSpace.css';
+import '../../../res/css/syner/ElemSpace.css';
 
 interface ElemSpaceProps {
     bgImageUrl: string;

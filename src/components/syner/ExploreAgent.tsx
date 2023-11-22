@@ -1,7 +1,7 @@
 
 import React from 'react';
 import '../../../res/css/syner/agent.css';
-import { ElemAgentPortrait } from './DiscoverAgent';
+import { ElemAgentPortrait } from './ElemAgent';
 
 
 const ExploreAgent: React.FC = () => {

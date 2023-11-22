@@ -35,8 +35,8 @@ import EmbeddedPage from "./EmbeddedPage";
 
 // [syner] 
 import StartAIChat from "../syner/StartAIChat";
-import ElemAgent from "../syner/DiscoverAgent";
-import ElemSpace from "../syner/DiscoverSpace";
+import ElemAgent from "../syner/ElemAgent";
+import ElemSpace from "../syner/ElemSpace";
 
 const onClickSendDm = (ev: ButtonEvent): void => {
     PosthogTrackers.trackInteraction("WebHomeCreateChatButton", ev);
