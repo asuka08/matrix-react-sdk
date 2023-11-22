@@ -1,97 +1,97 @@
-/* ElemSpace.css */
+/* DiscoverSpace.css */
 .mx_HomePage_default .discoverContainer{
-    margin-top:0;
-    margin-bottom:30px;
-    padding:0 30px;
-    justify-content:space-around;
+  margin-top:0;
+  margin-bottom:30px;
+  padding:0 30px;
+  justify-content:space-around;
 }
 
 .spaceItem {
-  flex: 1;
-  position:relative;
-  min-width: 200px;
-  height:210px;
-  border-radius: 8px;
-  overflow: hidden;
-  margin:0 10px 10px;
-  background: #fff;
-  border:1px solid #f2f2f2;
-  box-shadow: 0 6px 14px 0 hsla(0,0%,7%,.06);
+flex: 1;
+position:relative;
+min-width: 200px;
+height:210px;
+border-radius: 8px;
+overflow: hidden;
+margin:0 10px 10px;
+background: #fff;
+border:1px solid #f2f2f2;
+box-shadow: 0 6px 14px 0 hsla(0,0%,7%,.06);
 }
 
 .spaceImage {
-  position:relative;
-  width: 100%;
-  height: 90px;
+position:relative;
+width: 100%;
+height: 90px;
 }
 .spaceImage .sapceBgpic{
-  width:100%;
-  height:90px;
-  overflow:hidden;
+width:100%;
+height:90px;
+overflow:hidden;
 }
 .spaceImage .sapceBgpic img{
-  max-width: 100%;
-  width:auto;
-  height:auto;
+max-width: 100%;
+width:auto;
+height:auto;
 }
 .spaceImage .headPicture{
-  position: absolute;
-  left:50%;
-  bottom:-25px;
-  width:50px;
-  height:50px;
-  border-radius: 50%;
-  border:2px solid #fff;
-  margin-left:-25px;
+position: absolute;
+left:50%;
+bottom:-25px;
+width:50px;
+height:50px;
+border-radius: 50%;
+border:2px solid #fff;
+margin-left:-25px;
 }
 .spaceImage .headPicture img{
-  width:50px;
-  height:50px;
-  border-radius: 50%;
+width:50px;
+height:50px;
+border-radius: 50%;
 }
 .spaceContent {
-  padding: 15px 5px;
+padding: 15px 5px;
 }
 
 .spaceTitle {
-  font-size: 1em;
-  margin-bottom: 5px;
-  text-align: center;
+font-size: 1em;
+margin-bottom: 5px;
+text-align: center;
 }
 
 .spaceDescription {
-  font-size: .75em;
-  margin: 0;
-  text-align: center;
+font-size: .75em;
+margin: 0;
+text-align: center;
 }
 
 .spaceMeta {
-  position:absolute;
-  width:100%;
-  left:10px;
-  bottom:6px;
-  display: flex;
-  font-size: 0.8em;
-  color: #555;
-  justify-content: space-between;
+position:absolute;
+width:100%;
+left:10px;
+bottom:6px;
+display: flex;
+font-size: 0.8em;
+color: #555;
+justify-content: space-between;
 }
 
 .sapceViews, .spaceLikes {
-  display: inline-block;
+display: inline-block;
 }
 .spaceLikes{
-  margin-right: 20px;
+margin-right: 20px;
 }
 
 .sapceViews::before, .spaceLikes::before{
-  display: inline-block;
-  content: "";
-  width:8px;
-  height:8px;
-  background-color:green;
-  border-radius: 50%;
-  margin-right:3px;
+display: inline-block;
+content: "";
+width:8px;
+height:8px;
+background-color:#007B61;
+border-radius: 50%;
+margin-right:3px;
 }
 .spaceLikes::before{
-  background-color: darkgray;
+background-color: darkgray;
 }
