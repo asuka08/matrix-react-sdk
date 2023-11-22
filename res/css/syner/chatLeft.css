@@ -11,7 +11,7 @@
     padding-left: 30px;
     box-sizing: border-box;
     border-radius: 6px;
-    background-color: #2D5C6D;
+    background-color: #007B61;
     line-height: 45px;
     color:#fff;
     font-size: 16px;
@@ -84,10 +84,10 @@
     cursor: pointer;
 }
 .recommendItem:hover{
-    color:#2D5C6D;
+    color:#007B61;
 }
 .recommendItem.active{
-    background-color: #2D5C6D;
+    background-color: #007B61;
     color:#fff;
 }
 .leftChatItem{
@@ -101,21 +101,28 @@
 
 .leftChatItem.current,.leftChatItem:hover{
     background-color: #fff;
-    color: #2D5C6D;
+    color: #007b61;
 }
 .docItemIcon,.chatItemIcon{
     display: inline-block;
     vertical-align: middle;
-    width:30px;
-    height:30px;
+    width:18px;
+    height:18px;
+    margin-right:3px;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 .docItemIcon{
-    background: url(../../img/syner/doc_icon.svg) no-repeat;
-    background-size: cover;
+    background-image: url(../../img/syner/doc_icon.svg);
+}
+.leftChatItem.current .docItemIcon,.leftChatItem:hover .docItemIcon{
+    background-image: url(../../img/syner/doc_icon_active.svg);
 }
 .chatItemIcon{
-    background: url(../../img/syner/chat_icon.svg) no-repeat;
-    background-size: cover;
+    background-image: url(../../img/syner/chat_icon.svg);
+}
+.leftChatItem.current .chatItemIcon,.leftChatItem:hover .chatItemIcon{
+    background-image: url(../../img/syner/chat_icon_active.svg);
 }
 
 .leftChatDelete{
@@ -141,6 +148,26 @@
 }
 .leftLargeTitle .title{
     font-size: 16px;
+}
+.leftLargeTitle .welcome_icon,
+.leftLargeTitle .history_icon,
+.leftLargeTitle .nearby_icon
+{
+    display: inline-block;
+    width:18px;
+    height: 18px;
+    margin-right:5px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.leftLargeTitle .welcome_icon{
+    background-image: url(../../img/syner/welcome_icon.svg);
+}
+.leftLargeTitle .history_icon{
+    background-image: url(../../img/syner/history_icon.svg);
+}
+.leftLargeTitle .nearby_icon{
+    background-image: url(../../img//syner/nearby_icon.svg);
 }
 .leftLargeTitle .foldButton{
     width:16px;
@@ -223,17 +250,22 @@
 }
 .viewNum::before{
     display: inline-block;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     content: "";
     vertical-align: text-top;
     background: url(../../img/syner/view_icon.svg) no-repeat;
-    background-size: cover;
+    background-size: contain;
+    margin-right:2px;
 }
 .editIconButton{
-    width:18px;
-    height: 18px;
-    background: url(../../img/syner/edit_icon.svg) no-repeat;
+    width:16px;
+    height: 16px;
+    background-image: url(../../img/syner/edit_icon.svg);
     background-size: cover;
+    background-repeat: no-repeat;
     cursor: pointer;
+}
+.editIconButton:hover{
+    background-image: url(../../img/syner/edit_icon_hover.svg);
 }

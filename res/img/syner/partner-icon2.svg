@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>关注数选中</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="关注数选中">
+            <path d="M1.67112565,23.8847057 C0.904973822,24.2410396 0,23.7282959 0,22.9378812 L0,2.00387573 C0,0.991984933 0.912434657,0 2.01123047,0 L18.0104712,0 C19.109267,0 20,0.991984933 20,2.00387573 L20,22.9378812 C20,23.7267289 19.0982461,24.239569 18.3323298,23.8862968 L9.96513089,19.0269173 L1.67112565,23.8847057 Z" id="形状" fill="#017A61" fill-rule="nonzero"></path>
+            <rect id="矩形" fill="#FFFFFF" x="9" y="5" width="2" height="8" rx="1"></rect>
+            <rect id="矩形" fill="#FFFFFF" transform="translate(10.000000, 9.000000) rotate(-270.000000) translate(-10.000000, -9.000000) " x="9" y="5" width="2" height="8" rx="1"></rect>
+        </g>
+    </g>
+</svg>

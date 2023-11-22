@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="20px" viewBox="0 0 19 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>分享默认</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="分享默认" transform="translate(1.000000, 1.000000)" stroke="#75777A" stroke-width="2">
+            <path d="M16.9985,9.00006362 C16.9995,10.3446507 17,12.8572128 17,16.53775 C17,17.6898998 16.723187,18.000013 15.5433933,18.000013 C14.3635997,18.000013 2.59913702,18.000013 1.5,18.000013 C0.400873599,18.000013 0,17.6742523 0,16.5368349 C0,15.6124383 0,10.6161951 0,1.54818129 C0,0.323558872 0.287008534,0 1.46948936,0 C2.62919284,0 5.14066514,0 9.00390625,0" id="路径" fill-rule="nonzero"></path>
+            <path d="M5.95825195,12.000013 C6.39819336,6.36858399 9.4913737,3.36858399 15.237793,3.00001303" id="路径-5" stroke-linejoin="round"></path>
+            <polyline id="路径-6" stroke-linejoin="round" points="13 1.30252581e-05 17 3.00001303 13 7.10572592"></polyline>
+        </g>
+    </g>
+</svg>

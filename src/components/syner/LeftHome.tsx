@@ -6,7 +6,7 @@ const LeftHome: React.FC = () => {
     return (
         <div>
             <div className='leftLargeTitle'>
-                <div className='title'>欢迎来到Cona.ai</div>
+                <div className='title'><span className='welcome_icon'></span>欢迎来到Cona.ai</div>
                 <div className='foldButton'></div>
             </div>
             <div className='leftButtonDiv'>

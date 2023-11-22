@@ -5,7 +5,7 @@
 .agentTitle{
     font-size: 22px;
     line-height: 40px;
-    color: #2D5C6D;
+    color: #007B61;
 }
 .selectTag{
     display: inline-block;
@@ -20,9 +20,9 @@
     cursor: pointer;
 }
 .selectTag:hover,.selectTag.selected{
-    background: #2D5C6D;
+    background: #007B61;
     color:#fff;
-    border-color:#2D5C6D;
+    border-color:#007B61;
     transition: all 0.2s;
 }
 .agentShow{
@@ -92,4 +92,14 @@
     padding:0 5px;
     text-align: center;
     border-radius: 8px;
+}
+.agentBox .viewTag::before{
+    display: inline-block;
+    content: "";
+    width: 9px;
+    height:9px;
+    background-image: url(../../img/syner/view_icon_white.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right:1px;
 }

@@ -44,10 +44,14 @@
   width:20px;
   height: 20px;
   margin-right:30px;
-  background: url(../../img/syner/goback-icon.png) no-repeat;
+  background-image: url(../../img/syner/goback_arrow.svg);
+  background-repeat: no-repeat;
   cursor: pointer;
   background-size: contain;
   margin-top: 20px;
+}
+.partnerDiv .goback:hover{
+  background-image: url(../../img/syner/goback_arrow_hover.svg);
 }
 
 .partnerDiv .headPic{
@@ -136,7 +140,7 @@
 .fileCon .fileStyle{
   display: inline-block;
   padding: 0 5px;
-  background-color: #7B92EB;
+  background-color: #007B61;
   color:#fff;
   border-radius: 8px 0 0 8px;
   margin-right:6px;
@@ -169,7 +173,7 @@
   display: inline-block;
   width:20px;
   height: 20px;
-  background: url(../../img/syner/refresh-icon.png) no-repeat;
+  background: url(../../img/syner/refresh_icon.svg) no-repeat;
   background-size: contain;
   content: "";
   vertical-align: text-bottom;
@@ -178,32 +182,30 @@
 
 .stopGenerate,.againGenerate{
   display: inline-block;
-  color: #0F40F5;
+  color: #007B61;
   cursor: pointer;
 }
 .stopGenerate:hover,.againGenerate:hover{
-  color:#4a6ef1;
+  color:#007B61;
 }
 .stopGenerate::before,.againGenerate::before{
   display: inline-block;
   width:20px;
   height: 20px;
-  background: url(../../img/syner/again-icon.png) no-repeat;
+  background: url(../../img/syner/again_icon.svg) no-repeat;
   background-size: contain;
   content: "";
   vertical-align: text-bottom;
   margin-right:3px;
 }
 .againGenerate::before{
-  background: url(../../img/syner/refresh-icon2.png) no-repeat;
+  background: url(../../img/syner/refresh_icon2.svg) no-repeat;
   background-size: contain;
 }
 
 p.answerRightButton{
   display: flex;
   justify-content: start;
-  background: url(../../img/syner/chat-buttons.png) no-repeat;
-  background-size: contain;
   margin:0;
 }
 .copyIcon,.shareIcon,.readIcon{
@@ -212,11 +214,27 @@ p.answerRightButton{
   height:20px;
   margin-right:6px; 
   cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
-.copyIcon{background-position: 0 0;}
-.shareIcon{background-position: 30px 0;}
-.readIcon{background-position: 60px 0;}
-
+.copyIcon{
+  background-image: url(../../img/syner/copy_icon.svg);
+}
+.copyIcon:hover{
+  background-image: url(../../img/syner/copy_icon_hover.svg);
+}
+.shareIcon{
+  background-image: url(../../img/syner/share_icon.svg);
+}
+.shareIcon:hover{
+  background-image: url(../../img/syner/share_icon_hover.svg);
+}
+.readIcon{
+  background-image: url(../../img/syner/read_icon.svg);
+}
+.readIcon:hover{
+  background-image: url(../../img/syner/read_icon_hover.svg);
+}
 /* 试着问问 */
 .tryTitle{
   width: 100%;
@@ -279,27 +297,38 @@ p.answerRightButton{
   position:absolute;
   right:20px;
   bottom:10px;
-  width:100px;
+  width:75px;
   height:30px;
-  background: url('../../img/syner/input-button.png') no-repeat 5px 0;
-  background-size: contain;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .uploatIcon,.chatIcon,.sendIcon{
   display: inline-block;
-  width:30px;
-  height:30px;
+  width:22px;
+  height:22px;
   cursor:pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .uploatIcon{
-  background-position: 0 0;
+  background-image:url(../../img/syner/upload_icon.svg);
+}
+.uploatIcon:hover{
+  background-image: url(../../img/syner/upload_icon_hover.svg);
 }
 .chatIcon{
-  background-position: 30px;
+  width:18px;
+  background-image: url(../../img/syner/voice_iocn.svg)
+}
+.chatIcon:hover{
+  background-image: url(../../img/syner/voice_icon_hover.svg);
 }
 .sendIcon{
-  background-position: 60px;
+  background-image: url(../../img/syner/sent_icon.svg)
+}
+.sendIcon:hover{
+  background-image: url(../../img/syner/sent_icon_hover.svg);
 }
 .textareaBox{
   align-items: flex-start;

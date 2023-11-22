@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>重新回答默认</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="重新回答默认" transform="translate(1.000000, 1.000000)">
+            <path d="M18,6.62057127 C16.9378541,2.80465108 13.3832469,0 9.1618017,0 C4.10187834,0 0,4.02943725 0,9 C0,13.9705627 4.10187834,18 9.1618017,18 L9.1618017,18 C12.4619295,18 15.3545273,16.2859715 16.9673873,13.7147188" id="路径" stroke="#75777A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M16,4 L18.5857864,4 C19.1380712,4 19.5857864,4.44771525 19.5857864,5 C19.5857864,5.26521649 19.4804296,5.5195704 19.2928932,5.70710678 L16.7071068,8.29289322 C16.3165825,8.68341751 15.6834175,8.68341751 15.2928932,8.29289322 C15.1053568,8.10535684 15,7.85100293 15,7.58578644 L15,5 C15,4.44771525 15.4477153,4 16,4 Z" id="矩形备份-8" fill="#75777A" transform="translate(18.000000, 7.000000) rotate(-135.000000) translate(-18.000000, -7.000000) "></path>
+        </g>
+    </g>
+</svg>
