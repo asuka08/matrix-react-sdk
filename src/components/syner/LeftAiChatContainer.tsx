@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import LeftLlmChat from './LeftLlmChat';
 import LeftAgentChat from './LeftAgentChat';
-import { AiChatPageTypeEnum, AiChatUtils } from './AiChatUtil';
+import { AiChatPageTypeEnum, AiChatUtils } from './AiChatUtils';
 import LeftSquare from './LeftSquare';
 
 
@@ -15,14 +15,14 @@ const LeftAiChatContainer: React.FC = () => {
     }, []);
 
 
-    const { page_type, page_id } = AiChatUtils.parseHash(hash);
+    const { pageType, pageId } = AiChatUtils.parseHash(hash);
 
     let leftElement;
-    if( page_type === AiChatPageTypeEnum.llm ) {
+    if( pageType === AiChatPageTypeEnum.llm ) {
         leftElement = <LeftLlmChat />;
-    } else if( page_type === AiChatPageTypeEnum.agent ) {
+    } else if( pageType === AiChatPageTypeEnum.agent ) {
         leftElement = <LeftAgentChat />;
-    } else if( page_type === AiChatPageTypeEnum.square ) {
+    } else if( pageType === AiChatPageTypeEnum.square ) {
         leftElement = <LeftSquare />;
     }
 

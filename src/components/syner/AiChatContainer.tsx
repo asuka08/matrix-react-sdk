@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ExploreAgent from './ExploreAgent';
 import ExploreSpace from './ExploreSpace';
 import AIChatPage from './AiChatPage';
-import { AiChatUtils, AiChatPageTypeEnum } from './AiChatUtil';
+import { AiChatUtils, AiChatPageTypeEnum } from './AiChatUtils';
 
 
 
@@ -15,19 +15,19 @@ const AiChatContainer: React.FC = () => {
         setHash(currentHash);
     }, []);
 
-    const { page_type, page_id } = AiChatUtils.parseHash(hash);
+    const { pageType, pageId } = AiChatUtils.parseHash(hash);
     
 
     let pageElement;
-    if( page_type === AiChatPageTypeEnum.llm ) {
-        pageElement = <AIChatPage pageType={page_type} pageId={page_id} />;
-    } else if( page_type === AiChatPageTypeEnum.agent ) {
-        if ( page_id ) {
-            pageElement = <AIChatPage pageType={page_type} pageId={page_id} />;
+    if( pageType === AiChatPageTypeEnum.llm ) {
+        pageElement = <AIChatPage pageType={pageType} pageId={pageId} />;
+    } else if( pageType === AiChatPageTypeEnum.agent ) {
+        if ( pageId ) {
+            pageElement = <AIChatPage pageType={pageType} pageId={pageId} />;
         } else {
             pageElement = <ExploreAgent />;
         }
-    } else if ( page_type === AiChatPageTypeEnum.square ) {
+    } else if ( pageType === AiChatPageTypeEnum.square ) {
         pageElement = <ExploreSpace />;
     }
 

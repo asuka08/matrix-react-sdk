@@ -18,22 +18,46 @@ export class AiChatUtils {
     static parseHash(hash: string) {
 
         if (!hash) {
-            return { page_type: "", page_id: "" };
+            return { pageType: "", pageId: "" };
         }
 
         const paraList = hash.split(/[#:]/);
-        let page_type = "";
-        let page_id = "";
+        let pageType = "";
+        let pageId = "";
 
         if (paraList.length > 2) {
-            page_type = paraList[2];
+            pageType = paraList[2];
         }
 
         if (paraList.length > 3) {
-            page_id = paraList[3];
+            pageId = paraList[3];
         }
 
-        return { page_type, page_id };
+        return { pageType, pageId };
+    }
+
+    /**
+     * 获取模型ID
+     * @returns 模型ID
+     */
+    static getModelId(page_type: string, page_id: string) {
+
+        let model_id;
+        if(page_type === "llm") {
+            model_id = "openai";
+        } 
+        else if(page_type === "agent") {
+            if(page_id === "yushiwei") {
+                model_id = "yushiwei";
+            } else {
+                model_id = "debug"
+            }
+        } 
+        else {
+            model_id = "debug"
+        }
+
+        return model_id;
     }
 }
 

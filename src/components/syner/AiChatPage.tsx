@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import '../../../res/css/syner/aiChat.css';
+import { AiChatPageTypeEnum, AiChatUtils } from './AiChatUtils';
 
 interface AIChatPageProps {
     pageType: string;
@@ -60,7 +61,7 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
             }
     
             try {
-                let model_id = getModelId();
+                let model_id = AiChatUtils.getModelId(pageType, pageId);
                 const response = await fetch(`http://localhost:8000/aichat/?question=${encodeURIComponent(question_to_send)}&model=${model_id}`);
                 if (!response.body) {
                     throw new Error('Response body is null');
@@ -131,31 +132,31 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
         return item.value;
     }
 
-    /**
-     * 获取模型ID
-     * @returns 模型ID
-     */
-    const getModelId = () => {
+    // /**
+    //  * 获取模型ID
+    //  * @returns 模型ID
+    //  */
+    // const getModelId = () => {
 
-        let model_id;
-        if(pageType === "llm") {
-            model_id = "openai";
-        } 
-        else if(pageType === "agent") {
-            if(pageId === "yushiwei") {
-                model_id = "yushiwei";
-            } else if(pageId === "llm") {
-                model_id = "openai";
-            } else {
-                model_id = "debug"
-            }
-        } 
-        else {
-            model_id = "debug"
-        }
+    //     let model_id;
+    //     if(pageType === "llm") {
+    //         model_id = "openai";
+    //     } 
+    //     else if(pageType === "agent") {
+    //         if(pageId === "yushiwei") {
+    //             model_id = "yushiwei";
+    //         } else if(pageId === "llm") {
+    //             model_id = "openai";
+    //         } else {
+    //             model_id = "debug"
+    //         }
+    //     } 
+    //     else {
+    //         model_id = "debug"
+    //     }
 
-        return model_id;
-    }
+    //     return model_id;
+    // }
 
     /**
      * 将聊天界面滚动到底部
@@ -173,14 +174,33 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
 
     return (
         <div className="aichat_container">
-            <div className="chatTopbar">
-               <div className='topbarNewchat'>
-                    <p className='newText'>{getModelId()}</p>
-                    <div className='rightButton'>
-                        <div className='sourceButton'><img src='/welcome/syner/temp/headpic.jpeg'></img>Cona聚合</div>
+
+            {pageType === AiChatPageTypeEnum.llm && (
+                <div className="chatTopbar">
+                <div className='topbarNewchat'>
+                        <p className='newText'>{AiChatUtils.getModelId(pageType, pageId)}</p>
+                        <div className='rightButton'>
+                            <div className='sourceButton'><img src='/welcome/syner/temp/headpic.jpeg'></img>Cona聚合</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
+
+            {pageType === AiChatPageTypeEnum.agent && (
+                <div className="chatTopbar">
+                    <div className='partnerDiv'>
+                        <div className='goback'></div>
+                        <div className='headPic'><img src='/welcome/syner/temp/headpic.jpeg'></img></div>
+                        <div className='introText'>
+                            <p className='colorText'><span className='boldText'>余世维老师</span> @cona官方</p>
+                            <p>我是你们的老朋友余世维，您可以就企业管理、领导力、执行力向我咨询，我将与你一起进步！</p>
+                        </div>
+                        <div className='addTeam'>
+                            <div className='addButton'><span className='joinIcon'></span>添加到团队</div>
+                        </div>
+                    </div>
+                </div>
+            )}
             
             <div className='mainContainer' ref={mainContainerRef}>
                 <div className='chatContainer' >
