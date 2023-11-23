@@ -45,7 +45,7 @@ import { ButtonEvent } from "../views/elements/AccessibleButton";
 import PosthogTrackers from "../../PosthogTrackers";
 import PageType from "../../PageTypes";
 import { UserOnboardingButton } from "../views/user-onboarding/UserOnboardingButton";
-import LeftAiChat from "../syner/LeftAiChat";
+import LeftAiChatContainer from "../syner/LeftAiChatContainer";
 import LeftHome from "../syner/LeftHome";
 
 interface IProps {
@@ -389,10 +389,10 @@ export default class LeftPanel extends React.Component<IProps, IState> {
 
         const roomListClasses = classNames("mx_LeftPanel_actualRoomListContainer", "mx_AutoHideScrollbar");
 
-        // [syner] 添加AI对话左边栏 [Start]
+        // [syner start] 添加AI对话左边栏
         const leftAiChatList = (
             <div>
-                <LeftAiChat />
+                <LeftAiChatContainer />
             </div>
         );
 
@@ -401,26 +401,33 @@ export default class LeftPanel extends React.Component<IProps, IState> {
         );
 
         let leftList;
+        let isAiChat = false;
 
         if(this.props.pageType === PageType.AiChat) {
             leftList = leftAiChatList;
+            isAiChat = true;
         } else if(this.props.pageType === PageType.HomePage) {
             leftList = leftHomeList;
+            isAiChat = true;
         } else {
             leftList = roomList;
         }
-        // [syner] 添加AI对话左边栏 [End]
+        // [syner end] 添加AI对话左边栏
 
         return (
             <div className={containerClasses}>
                 <div className="mx_LeftPanel_roomListContainer">
-                    {shouldShowComponent(UIComponent.FilterContainer) && this.renderSearchDialExplore()}
-                    {this.renderBreadcrumbs()}
-                    {!this.props.isMinimized && <RoomListHeader onVisibilityChange={this.refreshStickyHeaders} />}
-                    <UserOnboardingButton
-                        selected={this.props.pageType === PageType.HomePage}
-                        minimized={this.props.isMinimized}
-                    />
+                    {!isAiChat && (
+                        <>
+                            {shouldShowComponent(UIComponent.FilterContainer) && this.renderSearchDialExplore()}
+                            {this.renderBreadcrumbs()}
+                            {!this.props.isMinimized && <RoomListHeader onVisibilityChange={this.refreshStickyHeaders} />}
+                            <UserOnboardingButton
+                                selected={this.props.pageType === PageType.HomePage}
+                                minimized={this.props.isMinimized}
+                            />
+                        </>
+                    )}
                     <div className="mx_LeftPanel_roomListWrapper">
                         <div
                             className={roomListClasses}

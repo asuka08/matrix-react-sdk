@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ExploreAgent from './ExploreAgent';
 import ExploreSpace from './ExploreSpace';
 import AIChatPage from './AiChatPage';
+import { AiChatUtils, AiChatPageTypeEnum } from './AiChatUtil';
 
 
 
@@ -14,45 +15,26 @@ const AiChatContainer: React.FC = () => {
         setHash(currentHash);
     }, []);
 
-
-    /*
-    分解形如 #/aichat/#agent:yushiwei 这样的字符串
-    URL参数形式
-    首页		        /#/home
-    Chat大模型聊天       /#/aichat/#llm
-    Agent首页	        /#/aichat/#agent
-    Agent聊天	        /#/aichat/#agent:yushiwei
-    社区首页		     /#/aichat/#space
-    */
-    const para_list:string[] = hash.split(/[#:]/);
-    let page_type = "";
-    let page_id = "";
-
-    if (para_list.length>2) {
-        page_type = para_list[2];
-    }
-
-    if (para_list.length>3) {
-        page_id = para_list[3];
-    }
+    const { page_type, page_id } = AiChatUtils.parseHash(hash);
+    
 
     let pageElement;
-    if( page_type === "llm" ) {
+    if( page_type === AiChatPageTypeEnum.llm ) {
         pageElement = <AIChatPage pageType={page_type} pageId={page_id} />;
-    } else if( page_type === "agent" ) {
+    } else if( page_type === AiChatPageTypeEnum.agent ) {
         if ( page_id ) {
             pageElement = <AIChatPage pageType={page_type} pageId={page_id} />;
         } else {
             pageElement = <ExploreAgent />;
         }
-    } else if ( page_type === "square" ) {
+    } else if ( page_type === AiChatPageTypeEnum.square ) {
         pageElement = <ExploreSpace />;
     }
 
     return (
-        <div>
+        <>
             {pageElement}
-        </div>
+        </>
     );
 }
 

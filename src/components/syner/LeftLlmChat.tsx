@@ -5,6 +5,13 @@ const LeftLlmChat: React.FC = () => {
 
     return (
         <div>
+            <div className='leftLargeTitle'>
+                <div className='title'><span className='welcome_icon'></span>历史记录</div>
+                <div className='foldButton'></div>
+            </div>
+            <div className='leftButtonDiv'>
+                <div className='newButton'><span className='plusIcon'></span>创建新对话</div>
+            </div>
             <div className='leftSearchDiv'>
                 <div className='leftSearch'>
                     <input placeholder='搜索历史记录'></input>

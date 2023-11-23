@@ -9,9 +9,7 @@ const LeftHome: React.FC = () => {
                 <div className='title'><span className='welcome_icon'></span>欢迎来到Cona.ai</div>
                 <div className='foldButton'></div>
             </div>
-            <div className='leftButtonDiv'>
-                <div className='newButton'><span className='plusIcon'></span>创建新对话</div>
-            </div>
+
             <div className='definePrompt'>
                 <div className='tt'>自定义prompt</div>
                 <div className='clickArrow'></div>

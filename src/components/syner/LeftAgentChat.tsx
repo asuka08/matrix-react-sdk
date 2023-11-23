@@ -5,6 +5,10 @@ const LeftAgentChat: React.FC = () => {
 
     return (
         <div>
+            <div className='leftLargeTitle'>
+                <div className='title'><span className='welcome_icon'></span>最近的伙伴</div>
+                <div className='foldButton'></div>
+            </div>
             <div className='leftPartner current'>
                 <div className='leftPartnerPic'><img src="/welcome/syner/temp/agentpic.jpeg"></img></div>
                 <div className='intro'>
