@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../../../res/css/syner/aiChat.css';
 
 interface AIChatPageProps {
@@ -12,8 +12,10 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
     const [chatHistory, setChatHistory] = useState<Array<{ type: 'user' | 'answer', content: string }>>([]);
     const [currentResponse, setCurrentResponse] = useState<string>('');
     const [isFetching, setIsFetching] = useState<boolean>(false);
+    const mainContainerRef = useRef<HTMLDivElement>(null);
     // const [hash, setHash] = useState<string>('');
 
+    // 组件加载时, 从sessionStorage中获取问题并发送
     useEffect(() => {
         // 这里的代码会在组件加载（挂载）后执行
         let question = getSessionStorage('aichat_text')
@@ -22,10 +24,6 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
             sendMessage(question);
         }
 
-        // const currentHash = window.location.hash;
-        // setHash(currentHash);
-
-        // 如果需要在组件卸载时执行清理工作，可以在这里返回一个函数
         return () => {
             // 这里的代码会在组件卸载时执行
         };
@@ -33,7 +31,15 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
 
     }, []); 
 
-    // 发送问题消息的函数
+    // 监测 currentResponse 变化，如果变化则滚动到底部
+    useEffect(() => {
+        scrollToBottom(false);
+    }, [chatHistory,currentResponse]); 
+
+    /**
+     * 发送问题消息的函数
+     * @param question 问题文本
+     */
     const sendMessage = async (question:string | null = null) => {
         let question_to_send:string = '';
         if(question) {
@@ -43,6 +49,7 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
         }
 
         if (question_to_send && !isFetching ) {
+            scrollToBottom(true);
             setIsFetching(true);
             setChatHistory(prev => [...prev, { type: 'user', content: question_to_send }]); // 用户问题添加进历史记录
             setInputText(''); // 清空输入框
@@ -75,9 +82,6 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
                     response_text += decoder.decode(value, { stream: true });
                     setCurrentResponse(response_text);
 
-                    // 将流式响应的每个片段添加到聊天记录
-                    // const textChunk = decoder.decode(value, { stream: true });
-                    // setCurrentResponse(prevResponse => prevResponse + textChunk);
                 }
 
             } catch (error) {
@@ -89,12 +93,18 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
     };
     
 
-    // 处理输入框变化的函数
+    /**
+     * 处理输入框变化的函数
+     * @param e 
+     */
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setInputText(e.target.value);
     }
 
-    // 处理回车的函数
+    /**
+     * 处理回车的函数
+     * @param e 
+     */
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter' && inputText.trim() && !isFetching) {
             e.preventDefault();
@@ -102,31 +112,63 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
         }
     }
 
-    // 获取sessionStorage数据，并检查是否过期
+    /**
+     * 获取sessionStorage数据，并检查是否过期. 获取之后删除
+     * @param key 
+     * @returns 
+     */
     const getSessionStorage = (key: string) => {
         const itemStr = sessionStorage.getItem(key);
+        sessionStorage.removeItem(key);
         if (!itemStr) {
             return null;
         }
         const item = JSON.parse(itemStr);
         const now = new Date();
         if (now.getTime() > item.expiry) {
-            sessionStorage.removeItem(key);
             return null;
         }
         return item.value;
     }
 
-    // 获取模型ID
+    /**
+     * 获取模型ID
+     * @returns 模型ID
+     */
     const getModelId = () => {
 
         let model_id;
-        if(pageId === "yushiwei") {
-            model_id = "yushiwei";
-        } else {
+        if(pageType === "llm") {
             model_id = "openai";
+        } 
+        else if(pageType === "agent") {
+            if(pageId === "yushiwei") {
+                model_id = "yushiwei";
+            } else if(pageId === "llm") {
+                model_id = "openai";
+            } else {
+                model_id = "debug"
+            }
+        } 
+        else {
+            model_id = "debug"
         }
+
         return model_id;
+    }
+
+    /**
+     * 将聊天界面滚动到底部
+     * @param enforce 是否强制滚动到底部
+     */
+    const scrollToBottom = (enforce:boolean) => {
+        if(mainContainerRef.current) {
+            const { scrollTop, scrollHeight, clientHeight } = mainContainerRef.current;
+            const isAtBottom = scrollTop + clientHeight >= scrollHeight - 200;
+            if( enforce || isAtBottom ) {
+                mainContainerRef.current.scrollTo(0, scrollHeight - clientHeight);
+            }
+        }
     }
 
     return (
@@ -140,7 +182,7 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
                 </div>
             </div>
             
-            <div className='mainContainer'>
+            <div className='mainContainer' ref={mainContainerRef}>
                 <div className='chatContainer' >
                     {chatHistory.map((msg, index) => (
                         <div className='chatRow'> 
