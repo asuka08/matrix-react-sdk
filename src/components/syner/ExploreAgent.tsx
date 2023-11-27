@@ -36,7 +36,7 @@ const ExploreAgent: React.FC = () => {
                 
             </div> 
 
-            <div className='windowLayer'>
+            <div className='windowLayer' style={{display:'none'}}>
                 <div className='popWindow agentPop'>
                     <div className='popClose'></div>
                     <div className='popAgentInfo'>

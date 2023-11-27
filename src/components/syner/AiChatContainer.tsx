@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ExploreAgent from './ExploreAgent';
 import ExploreSpace from './ExploreSpace';
 import AIChatPage from './AiChatPage';
-import { AiChatUtils, AiChatPageTypeEnum } from './AiChatUtils';
+import { AiChatUtils, AiChatPageTypeEnum } from './utils/AiChatUtils';
 
 
 

@@ -59,6 +59,22 @@ export class AiChatUtils {
 
         return model_id;
     }
+
+    /**
+     * 获取AiChat服务URL
+     * @param baseUrl 
+     * @param question 
+     * @param modelId 
+     * @returns 
+     */
+    static getAiChatServUrl(baseUrl: string, question:string, modelId:string) {
+        if(!baseUrl) {
+            let baseUrlTemp = baseUrl; 
+        } else {
+            let baseUrlTemp = "http://synerai.cona.ai/aichat/";
+        }
+        return `${baseUrl}?question=${encodeURIComponent(question)}&model=${modelId}`;
+    }
 }
 
 /**

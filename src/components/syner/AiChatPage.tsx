@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import '../../../res/css/syner/aiChat.css';
-import { AiChatPageTypeEnum, AiChatUtils } from './AiChatUtils';
+import { AiChatPageTypeEnum, AiChatUtils } from './utils/AiChatUtils';
+import { ConaConfig, AiChatConfig } from './utils/ConaConfig';
 
 interface AIChatPageProps {
     pageType: string;
@@ -13,12 +14,20 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
     const [chatHistory, setChatHistory] = useState<Array<{ type: 'user' | 'answer', content: string }>>([]);
     const [currentResponse, setCurrentResponse] = useState<string>('');
     const [isFetching, setIsFetching] = useState<boolean>(false);
+    const [conaConfig, setConaConfig] = useState<ConaConfig | null>(null);
     const mainContainerRef = useRef<HTMLDivElement>(null);
     // const [hash, setHash] = useState<string>('');
 
     // 组件加载时, 从sessionStorage中获取问题并发送
     useEffect(() => {
         // 这里的代码会在组件加载（挂载）后执行
+
+        fetch('/cona.config.json')
+            .then(response => response.json())
+            .then((config: ConaConfig) => {
+                setConaConfig(config);
+            });
+
         let question = getSessionStorage('aichat_text')
         if(question) {
             // setInputText(question);
@@ -62,7 +71,9 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
     
             try {
                 let model_id = AiChatUtils.getModelId(pageType, pageId);
-                const response = await fetch(`http://localhost:8000/aichat/?question=${encodeURIComponent(question_to_send)}&model=${model_id}`);
+                // const response = await fetch(`http://localhost:8000/aichat/?question=${encodeURIComponent(question_to_send)}&model=${model_id}`);
+                // const response = await fetch(`http://synerai.cona.ai/aichat/?question=${encodeURIComponent(question_to_send)}&model=${model_id}`);
+                const response = await fetch(AiChatUtils.getAiChatServUrl(conaConfig?.aichat_config.serv_url ?? '', question_to_send, model_id));
                 if (!response.body) {
                     throw new Error('Response body is null');
                 }
@@ -132,32 +143,6 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
         return item.value;
     }
 
-    // /**
-    //  * 获取模型ID
-    //  * @returns 模型ID
-    //  */
-    // const getModelId = () => {
-
-    //     let model_id;
-    //     if(pageType === "llm") {
-    //         model_id = "openai";
-    //     } 
-    //     else if(pageType === "agent") {
-    //         if(pageId === "yushiwei") {
-    //             model_id = "yushiwei";
-    //         } else if(pageId === "llm") {
-    //             model_id = "openai";
-    //         } else {
-    //             model_id = "debug"
-    //         }
-    //     } 
-    //     else {
-    //         model_id = "debug"
-    //     }
-
-    //     return model_id;
-    // }
-
     /**
      * 将聊天界面滚动到底部
      * @param enforce 是否强制滚动到底部
@@ -171,6 +156,8 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
             }
         }
     }
+
+    
 
     return (
         <div className="aichat_container">

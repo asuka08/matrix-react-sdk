@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import LeftLlmChat from './LeftLlmChat';
 import LeftAgentChat from './LeftAgentChat';
-import { AiChatPageTypeEnum, AiChatUtils } from './AiChatUtils';
+import { AiChatPageTypeEnum, AiChatUtils } from './utils/AiChatUtils';
 import LeftSquare from './LeftSquare';
 
 
