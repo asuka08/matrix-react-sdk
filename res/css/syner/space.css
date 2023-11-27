@@ -46,6 +46,7 @@
     padding:20px 30px; 
     align-items: center;
     flex-wrap: wrap;
+    align-content:space-around;
 }
 .exploreTitle{
     padding-left:30px;
@@ -70,9 +71,10 @@
         flex: none;
     }
 }
-@media screen and (min-width:1800px){
+/*@media screen and (min-width:1800px){
     .spaceShow .spaceItem{
         width: 360px;
         flex: none;
     }
 }
+*/

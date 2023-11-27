@@ -1,6 +1,7 @@
 
 import React from 'react';
 import '../../../res/css/syner/agent.css';
+import '../../../res/css/syner/popWindow.css';
 import { ElemAgentPortrait } from './ElemAgent';
 
 
@@ -34,6 +35,36 @@ const ExploreAgent: React.FC = () => {
                 />
                 
             </div> 
+
+            <div className='windowLayer'>
+                <div className='popWindow agentPop'>
+                    <div className='popClose'></div>
+                    <div className='popAgentInfo'>
+                        <div className='popAgentPic'><img src='/welcome/syner/temp/headpic.jpeg'></img></div>
+                        <div className='popAgentIntro'>余世维老师 <span className='miniText'>@scona官方</span></div>
+                    </div>
+                    <div className='popRow'>
+                        选择工作空间
+                        <select className='popSelect'>
+                            <option>选项一</option>
+                            <option>选项二</option>
+                        </select>
+                    </div>
+                    <div className='popRow'>
+                        选择工作室
+                        <select className='popSelect'>
+                            <option>选项一</option>
+                            <option>选项二</option>
+                        </select>
+                    </div>
+                    <div className='popBtnDiv'>
+                        <span className='normalBtn'>取消</span>
+                        <span className='greenBtn'>确认</span>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
     );
