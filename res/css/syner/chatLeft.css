@@ -133,9 +133,13 @@
     top:15px;
     width:18px;
     height: 18px;
-    background: url(../../img/syner/delete.svg) no-repeat;
+    background-image: url(../../img/syner/delete.svg);
+    background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
+}
+.leftChatDelete:hover{
+    background-image: url(../../img/syner/delete_hover.svg);
 }
 .leftChatItem.current .leftChatDelete,.leftChatItem:hover .leftChatDelete{
     display: block;

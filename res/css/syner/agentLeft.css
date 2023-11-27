@@ -63,15 +63,24 @@
   }
   .leftPartner .gotop, .leftPartner .deleteBtn{
     display: inline-block;
-    width:14px;
-    height:14px;
-    background: url(../../img/syner/icon_gotop.svg) no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
   }
   .leftPartner .gotop{
+    width:16px;
+    height:15px;
     margin-right:3px;
+    background-image: url(../../img/syner/gotop_icon.svg);
+  }
+  .leftPartner .gotop:hover{
+    background-image: url(../../img/syner/gotop_icon_hover.svg);
   }
   .leftPartner .deleteBtn{
-    background-image: url(../../img/syner/icon_close.svg);
+    width:14px;
+    height:14px;
+    background-image: url(../../img/syner/close_icon.svg);
+  }
+  .leftPartner .deleteBtn:hover{
+    background-image: url(../../img/syner/close_icon_hover.svg);
   }
