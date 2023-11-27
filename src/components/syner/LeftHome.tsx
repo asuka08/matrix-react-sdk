@@ -6,10 +6,19 @@ const LeftHome: React.FC = () => {
     return (
         <div>
             <div className='leftLargeTitle'>
-                <div className='title'><span className='welcome_icon'></span>欢迎来到Cona.ai</div>
+                <div className='title'>
+                    {/* <span className='welcome_icon'></span>欢迎来到Cona.ai */}
+                    {/* <span className='history_icon'></span>历史记录 */}
+                    {/* <span className='nearby_icon'></span>最近的伙伴 */}
+                    社区
+                </div>
                 <div className='foldButton'></div>
             </div>
-
+            <div className='spaceMenu'>
+                <ul>
+                    <li className='active'><span className='recommendIcon'></span>推荐</li>
+                </ul>
+            </div>
             <div className='definePrompt'>
                 <div className='tt'>自定义prompt</div>
                 <div className='clickArrow'></div>

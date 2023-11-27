@@ -15,6 +15,7 @@
     line-height: 45px;
     color:#fff;
     font-size: 16px;
+    cursor: pointer;
 }
 .newButton .plusIcon{
     display: inline-block;
@@ -155,19 +156,25 @@
 {
     display: inline-block;
     width:18px;
-    height: 18px;
     margin-right:5px;
     background-size: cover;
     background-repeat: no-repeat;
+
 }
 .leftLargeTitle .welcome_icon{
+    height: 18px;
     background-image: url(../../img/syner/welcome_icon.svg);
+    vertical-align: text-bottom;
 }
 .leftLargeTitle .history_icon{
+    height: 18px;
     background-image: url(../../img/syner/history_icon.svg);
+    vertical-align: text-top;
 }
 .leftLargeTitle .nearby_icon{
+    height:16px;
     background-image: url(../../img//syner/nearby_icon.svg);
+    vertical-align: middle;
 }
 .leftLargeTitle .foldButton{
     width:16px;
@@ -268,4 +275,31 @@
 }
 .editIconButton:hover{
     background-image: url(../../img/syner/edit_icon_hover.svg);
+}
+/* 社区菜单 */
+.spaceMenu ul{
+    padding-left: 0;
+    margin: 0;
+}
+.spaceMenu li{
+    padding:6px 15px;
+    font-size: 14px;
+    list-style: none;
+}
+.spaceMenu li:hover,.spaceMenu li.active{
+    background-color: #fff;
+    color:#007B61;
+}
+.spaceMenu .recommendIcon{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: middle;
+    background-image: url(../../img/syner/recommend_icon.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.spaceMenu li:hover .recommendIcon,.spaceMenu li.active .recommendIcon{
+    background-image: url(../../img/syner/recommend_icon_hover.svg);
 }

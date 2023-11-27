@@ -6,7 +6,7 @@ const LeftLlmChat: React.FC = () => {
     return (
         <div>
             <div className='leftLargeTitle'>
-                <div className='title'><span className='welcome_icon'></span>历史记录</div>
+                <div className='title'><span className='history_icon'></span>历史记录</div>
                 <div className='foldButton'></div>
             </div>
             <div className='leftButtonDiv'>

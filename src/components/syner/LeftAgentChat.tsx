@@ -6,7 +6,7 @@ const LeftAgentChat: React.FC = () => {
     return (
         <div>
             <div className='leftLargeTitle'>
-                <div className='title'><span className='welcome_icon'></span>最近的伙伴</div>
+                <div className='title'><span className='nearby_icon'></span>最近的伙伴</div>
                 <div className='foldButton'></div>
             </div>
             <div className='leftPartner current'>
