@@ -57,17 +57,22 @@
     margin-left:10px;
     margin-bottom:0;
 }
-/*
+
 @media screen and (max-width:1440px){
-    .spaceItem{
-        width: 228px; 
+    .spaceShow .spaceItem{
+        width: 230px; 
         flex: none;
     }
 }
-@media screen and (min-width:1800px){
-    .spaceItem{
+@media screen and (min-width:1440px) and (max-width:1800px){
+    .spaceShow .spaceItem{
         width: 285px;
         flex: none;
     }
 }
-*/
+@media screen and (min-width:1800px){
+    .spaceShow .spaceItem{
+        width: 360px;
+        flex: none;
+    }
+}
