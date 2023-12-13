@@ -60,6 +60,26 @@ export class AiChatUtils {
         return model_id;
     }
 
+
+    /**
+     * 根据pageType和pageId获取llm_id和agent_id
+     * @param pageType 
+     * @param pageId 
+     * @returns 
+     */
+    static getLlmAgentId(pageType: string, pageId: string) {
+        let llm_id, agent_id;
+        if(pageType === AiChatPageTypeEnum.llm) {
+            llm_id = AiChatLlmType.openai;
+        } else if(pageType === AiChatPageTypeEnum.agent) {
+            llm_id = AiChatLlmType.agent;
+            agent_id = pageId;
+        } else {
+            llm_id = AiChatLlmType.debug;
+        }
+        return [llm_id, agent_id];
+    }
+
     /**
      * 获取AiChat服务URL
      * @param baseUrl 
@@ -67,13 +87,14 @@ export class AiChatUtils {
      * @param modelId 
      * @returns 
      */
-    static getAiChatServUrl(baseUrl: string, question:string, modelId:string) {
+    static getAiChatServUrl(baseUrl: string) {
+        let baseUrlTemp;
         if(!baseUrl) {
-            let baseUrlTemp = baseUrl; 
+            baseUrlTemp = baseUrl; 
         } else {
-            let baseUrlTemp = "http://synerai.cona.ai/aichat/";
+            baseUrlTemp = "http://synerai.cona.ai/aichat/";
         }
-        return `${baseUrl}?question=${encodeURIComponent(question)}&model=${modelId}`;
+        return baseUrlTemp;
     }
 }
 
@@ -84,4 +105,14 @@ export enum AiChatPageTypeEnum {
     llm = "llm",
     agent = "agent",
     square = "square",
+}
+
+
+/**
+ * AiChat 大语言模型类型枚举
+ */
+export enum AiChatLlmType {
+    openai = "openai",
+    agent = "agent",
+    debug = "debug"
 }

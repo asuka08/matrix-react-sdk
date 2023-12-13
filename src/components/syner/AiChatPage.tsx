@@ -15,6 +15,7 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
     const [currentResponse, setCurrentResponse] = useState<string>('');
     const [isFetching, setIsFetching] = useState<boolean>(false);
     const [conaConfig, setConaConfig] = useState<ConaConfig | null>(null);
+    const [ matrixUserId, setMatrixUserId ] = useState<string>('');
     const mainContainerRef = useRef<HTMLDivElement>(null);
     // const [hash, setHash] = useState<string>('');
 
@@ -28,15 +29,17 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
                 setConaConfig(config);
             });
 
-        let question = getSessionStorage('aichat_text')
-        if(question) {
-            // setInputText(question);
-            sendMessage(question);
+        let mx_user_id = localStorage.getItem("mx_user_id");
+        if(mx_user_id) {
+            setMatrixUserId(mx_user_id);
         }
 
-        return () => {
-            // 这里的代码会在组件卸载时执行
-        };
+        let question = getAichatQuestion('aichat_text')
+        if(question) {
+            // setInputText(question);
+            sendMessage(question, mx_user_id);
+        }
+
 
 
     }, []); 
@@ -50,13 +53,17 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
      * 发送问题消息的函数
      * @param question 问题文本
      */
-    const sendMessage = async (question:string | null = null) => {
+    const sendMessage = async (question:string|null = null, mx_user_id:string|null = null) => {
         let question_to_send:string = '';
+        let mx_user_id_to_send:string = '';
+
         if(question) {
             question_to_send = question.trim();
         } else if (inputText.trim() ) {
             question_to_send = inputText.trim();
         }
+
+        mx_user_id_to_send = mx_user_id ?? matrixUserId ?? '';
 
         if (question_to_send && !isFetching ) {
             scrollToBottom(true);
@@ -70,10 +77,24 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
             }
     
             try {
-                let model_id = AiChatUtils.getModelId(pageType, pageId);
-                // const response = await fetch(`http://localhost:8000/aichat/?question=${encodeURIComponent(question_to_send)}&model=${model_id}`);
-                // const response = await fetch(`http://synerai.cona.ai/aichat/?question=${encodeURIComponent(question_to_send)}&model=${model_id}`);
-                const response = await fetch(AiChatUtils.getAiChatServUrl(conaConfig?.aichat_config.serv_url ?? '', question_to_send, model_id));
+                // let model_id = AiChatUtils.getModelId(pageType, pageId);
+                let llm_id, agent_id;
+                [llm_id, agent_id] = AiChatUtils.getLlmAgentId(pageType, pageId);
+                let serv_url = conaConfig?.aichat_config.serv_url ?? '';
+                
+                const response = await fetch(serv_url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            question: question_to_send,
+                            llm_id: llm_id,
+                            agent_id: agent_id,
+                            user_id: mx_user_id_to_send,
+                        })
+                });
+
                 if (!response.body) {
                     throw new Error('Response body is null');
                 }
@@ -86,7 +107,7 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
                     if (done) { 
                         if (response_text) {
                             setCurrentResponse('');
-                            setChatHistory(prev => [...prev, { type: 'answer', content: response_text }]); // 添加完整响应
+                            setChatHistory(prev => [...prev, { type: 'answer', content: response_text }]); 
                         }
                         break;
                     }
@@ -129,7 +150,7 @@ const AIChatPage: React.FC<AIChatPageProps> = ({pageType, pageId}) => {
      * @param key 
      * @returns 
      */
-    const getSessionStorage = (key: string) => {
+    const getAichatQuestion = (key: string) => {
         const itemStr = sessionStorage.getItem(key);
         sessionStorage.removeItem(key);
         if (!itemStr) {
