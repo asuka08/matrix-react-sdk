@@ -2176,7 +2176,6 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                         matrixClient={MatrixClientPeg.safeGet()}
                         onRegistered={this.onRegistered}
                         currentRoomId={this.state.currentRoomId}
-                        view={this.state.view.toString()}
                     />
                 );
             } else {
