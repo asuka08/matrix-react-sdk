@@ -110,6 +110,7 @@ interface IProps {
     justRegistered?: boolean;
     roomJustCreatedOpts?: IOpts;
     forceTimeline?: boolean; // see props on MatrixChat
+    view?: string; // [syner] by 王远
 }
 
 interface IState {
@@ -654,7 +655,7 @@ class LoggedInView extends React.Component<IProps, IState> {
 
             // to-do: [syner] 待添加AIChat处理逻辑 by 王远  
             case PageTypes.AiChat:
-                pageElement = <AiChatContainer />
+                pageElement = <AiChatContainer view={this.props?.view} />
                 break;
 
             case PageTypes.UserView:

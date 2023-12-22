@@ -148,6 +148,7 @@ import { Filter } from "../views/dialogs/spotlight/Filter";
 import { checkSessionLockFree, getSessionLock } from "../../utils/SessionLock";
 import { SessionLockStolenView } from "./auth/SessionLockStolenView";
 import { ConfirmSessionLockTheftView } from "./auth/ConfirmSessionLockTheftView";
+import { AiChatUtils } from "../syner/utils/AiChatUtils";
 
 // legacy export
 export { default as Views } from "../../Views";
@@ -1117,7 +1118,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
     private viewAiChat(aiChatInfo: ViewAiChatPayload): void {
         
         this.setStateForNewView({
-            view: Views.LOGGED_IN,
+            view: AiChatUtils.getAiChatViewType(aiChatInfo.aichat_type),
             justRegistered: false,
             currentRoomId: null,
         });
@@ -2173,6 +2174,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                         matrixClient={MatrixClientPeg.safeGet()}
                         onRegistered={this.onRegistered}
                         currentRoomId={this.state.currentRoomId}
+                        view={this.state.view.toString()}
                     />
                 );
             } else {

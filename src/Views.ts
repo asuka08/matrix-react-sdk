@@ -54,6 +54,14 @@ enum Views {
 
     // Another instance of the application has started up. We just show an error page.
     LOCK_STOLEN,
+
+    // [syner start] 添加AiChat 3个页面类型
+    AICHAT_LLM,
+
+    AICHAT_AGENT,
+
+    AICHAT_SQUARE,
+    // [syner end] 添加AiChat 3个页面类型
 }
 
 export default Views;

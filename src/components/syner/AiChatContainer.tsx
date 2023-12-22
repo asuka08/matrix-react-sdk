@@ -4,20 +4,22 @@ import ExploreSpace from './ExploreSpace';
 import AIChatPage from './AiChatPage';
 import { AiChatUtils, AiChatPageTypeEnum } from './utils/AiChatUtils';
 
+interface Props {
+  view?: string;
+}
 
-
-const AiChatContainer: React.FC = () => {
+export function AiChatContainer({ view = ''  }: Props): JSX.Element {
     const [hash, setHash] = useState<string>('');
 
+    const currentHash = window.location.hash;
+    
     useEffect(() => {
-        const currentHash = window.location.hash;
-
         setHash(currentHash);
-    }, []);
+    }, [view]);
 
     const { pageType, pageId } = AiChatUtils.parseHash(hash);
     
-
+    console.log('syner pageType1 :>> ', pageType);
     let pageElement;
     if( pageType === AiChatPageTypeEnum.llm ) {
         pageElement = <AIChatPage pageType={pageType} pageId={pageId} />;

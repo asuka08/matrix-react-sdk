@@ -1,3 +1,4 @@
+import Views from "../../../Views";
 
 /**
  * AiChat相关页面工具函数类
@@ -92,9 +93,27 @@ export class AiChatUtils {
         if(!baseUrl) {
             baseUrlTemp = baseUrl; 
         } else {
-            baseUrlTemp = "http://synerai.cona.ai/aichat/";
+            baseUrlTemp = "https://synerai.cona.ai/aichat/";
         }
         return baseUrlTemp;
+    }
+
+
+    /**
+     * 通过aichatType获取viewType
+     * @param aichatType 
+     * @returns 
+     */
+    static getAiChatViewType(aichatType: string) {
+        let viewType;
+        if(aichatType === AiChatPageTypeEnum.llm) {
+            viewType = Views.AICHAT_LLM;
+        } else if(aichatType === AiChatPageTypeEnum.agent) {
+            viewType = Views.AICHAT_AGENT;
+        } else {
+            viewType = Views.AICHAT_SQUARE;
+        }
+        return viewType;
     }
 }
 
