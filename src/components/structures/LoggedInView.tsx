@@ -76,8 +76,10 @@ import { PipContainer } from "./PipContainer";
 import { monitorSyncedPushRules } from "../../utils/pushRules/monitorSyncedPushRules";
 import { ConfigOptions } from "../../SdkConfig";
 
-// [syner] by 王远
+// [syner start] by 王远
 import AiChatContainer from "../syner/AiChatContainer";
+import { AiChatPageTypeEnum } from "../syner/utils/AiChatUtils";
+// [syner end]
 
 // We need to fetch each pinned message individually (if we don't already have it)
 // so each pinned message may trigger a request. Limit the number per room for sanity.
@@ -110,7 +112,7 @@ interface IProps {
     justRegistered?: boolean;
     roomJustCreatedOpts?: IOpts;
     forceTimeline?: boolean; // see props on MatrixChat
-    view?: string; // [syner] by 王远
+    aichatPageType?: AiChatPageTypeEnum;        // [syner] by 王远
 }
 
 interface IState {
@@ -655,7 +657,7 @@ class LoggedInView extends React.Component<IProps, IState> {
 
             // to-do: [syner] 待添加AIChat处理逻辑 by 王远  
             case PageTypes.AiChat:
-                pageElement = <AiChatContainer view={this.props?.view} />
+                pageElement = <AiChatContainer aichatPageType={this.props?.aichatPageType} />
                 break;
 
             case PageTypes.UserView:

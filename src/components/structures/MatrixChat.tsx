@@ -148,7 +148,7 @@ import { Filter } from "../views/dialogs/spotlight/Filter";
 import { checkSessionLockFree, getSessionLock } from "../../utils/SessionLock";
 import { SessionLockStolenView } from "./auth/SessionLockStolenView";
 import { ConfirmSessionLockTheftView } from "./auth/ConfirmSessionLockTheftView";
-import { AiChatUtils } from "../syner/utils/AiChatUtils";
+import { AiChatPageTypeEnum, AiChatUtils } from "../syner/utils/AiChatUtils";
 
 // legacy export
 export { default as Views } from "../../Views";
@@ -215,6 +215,7 @@ interface IState {
     justRegistered?: boolean;
     roomJustCreatedOpts?: IOpts;
     forceTimeline?: boolean; // see props
+    aichatPageType?: AiChatPageTypeEnum;
 }
 
 export default class MatrixChat extends React.PureComponent<IProps, IState> {
@@ -1118,9 +1119,10 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
     private viewAiChat(aiChatInfo: ViewAiChatPayload): void {
         
         this.setStateForNewView({
-            view: AiChatUtils.getAiChatViewType(aiChatInfo.aichat_type),
+            view: Views.LOGGED_IN,
             justRegistered: false,
             currentRoomId: null,
+            aichatPageType:  AiChatUtils.getAiChatPageType(aiChatInfo.aichat_type),
         });
 
         let url_hash = "aichat/#" + aiChatInfo.aichat_type;

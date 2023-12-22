@@ -100,20 +100,17 @@ export class AiChatUtils {
 
 
     /**
-     * 通过aichatType获取viewType
+     * 通过aichatType获取 AiChatPageTypeEnum 枚举
      * @param aichatType 
      * @returns 
      */
-    static getAiChatViewType(aichatType: string) {
-        let viewType;
-        if(aichatType === AiChatPageTypeEnum.llm) {
-            viewType = Views.AICHAT_LLM;
-        } else if(aichatType === AiChatPageTypeEnum.agent) {
-            viewType = Views.AICHAT_AGENT;
-        } else {
-            viewType = Views.AICHAT_SQUARE;
+    static getAiChatPageType(aichatType: string) {
+        let page_type = AiChatPageTypeEnum[aichatType as keyof typeof AiChatPageTypeEnum];
+
+        if(!page_type) {
+            page_type = AiChatPageTypeEnum.agent;
         }
-        return viewType;
+        return page_type;
     }
 }
 
