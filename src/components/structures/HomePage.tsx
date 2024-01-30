@@ -103,6 +103,10 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
         return <EmbeddedPage className="mx_HomePage" url={pageUrl} scrollbar={true} />;
     }
 
+    justRegistered = false;
+
+    console.log("justRegistered", justRegistered);
+
     let introSection: JSX.Element;
     if (justRegistered || !OwnProfileStore.instance.getHttpAvatarUrl(parseInt(AVATAR_SIZE, 10))) {
         introSection = <UserWelcomeTop />;

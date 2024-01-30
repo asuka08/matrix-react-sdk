@@ -52,6 +52,7 @@ export function UserOnboardingPage({ justRegistered = false }: Props): JSX.Eleme
     const useCase = useSettingValue<UseCase | null>("FTUE.useCaseSelection");
     const context = useUserOnboardingContext();
     const tasks = useUserOnboardingTasks(context);
+    justRegistered = false;
 
     const initialSyncComplete = useInitialSyncComplete();
     const [showList, setShowList] = useState<boolean>(false);
@@ -69,18 +70,18 @@ export function UserOnboardingPage({ justRegistered = false }: Props): JSX.Eleme
     }, [initialSyncComplete, setShowList]);
 
     // Only show new onboarding list to users who registered after a given date or have chosen a use case
-    if (!showUserOnboardingPage(useCase)) {
-        return <HomePage justRegistered={justRegistered} />;
-    }
+    // if (!showUserOnboardingPage(useCase)) {
+    return <HomePage justRegistered={false} />;
+    // }
 
-    if (pageUrl) {
-        return <EmbeddedPage className="mx_HomePage" url={pageUrl} scrollbar={true} />;
-    }
+    // if (pageUrl) {
+    //     return <EmbeddedPage className="mx_HomePage" url={pageUrl} scrollbar={true} />;
+    // }
 
-    return (
-        <AutoHideScrollbar className="mx_UserOnboardingPage">
-            <UserOnboardingHeader useCase={useCase} />
-            {showList && <UserOnboardingList tasks={tasks} />}
-        </AutoHideScrollbar>
-    );
+    // return (
+    //     <AutoHideScrollbar className="mx_UserOnboardingPage">
+    //         <UserOnboardingHeader useCase={useCase} />
+    //         {showList && <UserOnboardingList tasks={tasks} />}
+    //     </AutoHideScrollbar>
+    // );
 }

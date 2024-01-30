@@ -1395,7 +1395,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                 if (welcomeUserRoom === null) {
                     // We didn't redirect to the welcome user room, so show
                     // the homepage.
-                    dis.dispatch<ViewHomePagePayload>({ action: Action.ViewHomePage, justRegistered: true });
+                    dis.dispatch<ViewHomePagePayload>({ action: Action.ViewHomePage, justRegistered: false });
                 }
             } else if (ThreepidInviteStore.instance.pickBestInvite()) {
                 // The user has a 3pid invite pending - show them that
@@ -1408,7 +1408,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
             } else {
                 // The user has just logged in after registering,
                 // so show the homepage.
-                dis.dispatch<ViewHomePagePayload>({ action: Action.ViewHomePage, justRegistered: true });
+                dis.dispatch<ViewHomePagePayload>({ action: Action.ViewHomePage, justRegistered: false });
             }
         } else {
             this.showScreenAfterLogin();
@@ -2189,7 +2189,9 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                 />
             );
         } else if (this.state.view === Views.USE_CASE_SELECTION) {
-            view = <UseCaseSelection onFinished={(useCase): Promise<void> => this.onShowPostLoginScreen(useCase)} />;
+            // view = <UseCaseSelection onFinished={(useCase): Promise<void> => this.onShowPostLoginScreen(useCase)} />;
+            this.onShowPostLoginScreen(UseCase.Skip);
+            view = <></>;
         } else if (this.state.view === Views.LOCK_STOLEN) {
             view = <SessionLockStolenView />;
         } else {

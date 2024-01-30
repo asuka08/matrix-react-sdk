@@ -646,7 +646,7 @@ class LoggedInView extends React.Component<IProps, IState> {
                 break;
 
             case PageTypes.HomePage:
-                pageElement = <UserOnboardingPage justRegistered={this.props.justRegistered} />;
+                pageElement = <UserOnboardingPage justRegistered={false} />;
                 break;
 
             case PageTypes.UserView:
